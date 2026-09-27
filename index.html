@@ -3,263 +3,174 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>iamaforeigner — 고래 기사와 오르는 회화의 산</title>
+<title>iamaforeigner — 한마디씩 말하면 산을 오릅니다</title>
 <meta name="description" content="고래 기사와 함께 영어와 일본어 일상 회화를 익히는 앱. tier 1 산기슭에서 tier 60 정상까지, 매일 한마디씩.">
 <meta property="og:title" content="iamaforeigner">
 <meta property="og:description" content="한마디씩 말하면 산을 오릅니다. 영어와 일본어 일상 회화 앱.">
 <meta property="og:image" content="images/og.jpg">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#cfe9ff">
+<meta name="theme-color" content="#ffffff">
 <link rel="icon" href="images/icon.png">
 <link rel="apple-touch-icon" href="images/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jua&family=IBM+Plex+Sans+KR:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-/* ---------- top bar ---------- */
-.top { position: absolute; inset: 0 0 auto 0; z-index: 5; padding: 18px 0; }
-.top .wrap { display: flex; align-items: center; justify-content: space-between; }
-.top nav a { font-size: 15px; color: var(--ink); text-decoration: none; margin-left: 18px; }
-.top nav a:hover { text-decoration: underline; }
-@media (max-width: 520px) { .top nav .opt { display: none; } }
+section { padding: 96px 0; }
+@media (min-width: 960px) { section { padding: 136px 0; } }
+
+h1, h2 { font-weight: 700; letter-spacing: -0.035em; margin: 0; color: var(--ink); }
+h2 { font-size: clamp(30px, 4.6vw, 48px); line-height: 1.2; }
+.sub { color: var(--ink-2); font-size: 17px; margin: 16px 0 0; max-width: 32em; }
 
 /* ---------- hero ---------- */
-.hero {
-  position: relative;
-  background:
-    radial-gradient(60% 40% at 15% 20%, #fff 0, rgba(255,255,255,0) 70%),
-    radial-gradient(40% 30% at 90% 10%, rgba(255,255,255,.8) 0, rgba(255,255,255,0) 70%),
-    linear-gradient(#a9d8ff, var(--sky) 60%, #e8f5ff);
-  padding: 96px 0 72px;
-  overflow: hidden;
+.hero { padding: 48px 0 88px; }
+.hero .wrap { display: grid; gap: 56px; align-items: center; }
+@media (min-width: 960px) {
+  .hero { padding: 72px 0 120px; }
+  .hero .wrap { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; }
 }
-.hero .wrap { display: grid; gap: 40px; align-items: center; }
-@media (min-width: 900px) {
-  .hero { padding: 120px 0 96px; }
-  .hero .wrap { grid-template-columns: 1.15fr .85fr; gap: 56px; }
+.hero h1 { font-size: clamp(42px, 7.4vw, 76px); line-height: 1.1; }
+.hero h1 span { display: block; }
+.hero .lede { font-size: 18px; color: var(--ink-2); margin: 24px 0 36px; max-width: 26em; }
+.hero .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+.textlink {
+  font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none;
+  display: inline-flex; align-items: center; gap: 6px; padding: 12px 4px;
 }
-.hero h1 {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: clamp(46px, 11vw, 92px);
-  line-height: 1.02;
-  letter-spacing: -0.01em;
-  margin: 0 0 24px;
-  color: var(--ink);
-}
-.hero h1 .line { display: block; }
-.hero h1 .line:nth-child(2) {
-  color: var(--whale-deep);
-  -webkit-text-stroke: 0;
-  padding-left: .6em;
-}
-.hero .lede { font-size: 18px; max-width: 30em; color: var(--ink-soft); margin: 0 0 32px; }
-.hero .lede strong { color: var(--ink); font-weight: 600; }
+.textlink svg { width: 16px; height: 16px; transition: transform .2s; }
+.textlink:hover svg { transform: translateY(2px); }
 
-.cta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-.soon {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-family: var(--display); font-size: 19px;
-  padding: 14px 22px;
-  border-radius: 999px;
-  background: var(--ink); color: #fff;
-  cursor: default;
+.visual { position: relative; width: 100%; max-width: 480px; margin: 0 auto 32px; }
+.visual .art {
+  aspect-ratio: 4 / 5; border-radius: 28px; overflow: hidden; background: #bfe0fb;
 }
-.soon svg { width: 18px; height: 18px; flex: none; }
-.soon small { font-family: var(--body); font-size: 13px; opacity: .7; margin-left: 2px; }
-.ghost {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-size: 16px; font-weight: 600; color: var(--ink);
-  text-decoration: none; padding: 12px 6px;
-  border-bottom: 2px dashed var(--gold);
+.visual .art img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; }
+.visual .phone {
+  position: absolute; width: 42%; right: -4px; bottom: -32px; padding: 5px; border-radius: 30px;
 }
-.ghost svg { width: 16px; height: 16px; }
-
-/* arched gate framing the splash art */
-.gate {
-  position: relative;
-  margin: 0 auto;
-  width: min(100%, 420px);
-  aspect-ratio: 2 / 2.7;
-  border-radius: 999px 999px 28px 28px;
-  overflow: hidden;
-  border: 6px solid #fff;
-  box-shadow: 0 0 0 3px var(--gold), 0 30px 60px -20px rgba(26,43,76,.45);
-  background: #9fd2ff;
-}
-.gate img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
-.gate-wrap { position: relative; }
-.gate-wrap .tag {
-  position: absolute; left: 50%; bottom: -18px; transform: translateX(-50%) rotate(-2deg);
-  white-space: nowrap;
+.visual .phone img { border-radius: 25px; }
+@media (min-width: 960px) {
+  .visual { margin: 0 0 0 auto; }
+  .visual .phone { width: 210px; right: auto; left: -72px; bottom: -48px; padding: 7px; border-radius: 40px; }
+  .visual .phone img { border-radius: 33px; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .gate { animation: rise 1s cubic-bezier(.2,.8,.2,1) both .1s; }
-  @keyframes rise { from { transform: translateY(40px); opacity: 0; } to { transform: none; opacity: 1; } }
+  .hero .copy > * { animation: up .7s cubic-bezier(.2,.7,.2,1) both; }
+  .hero .copy > :nth-child(2) { animation-delay: .08s; }
+  .hero .copy > :nth-child(3) { animation-delay: .16s; }
+  .visual .art { animation: fade 1s ease both .1s; }
+  .visual .phone { animation: up .9s cubic-bezier(.2,.7,.2,1) both .35s; }
+  @keyframes up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
 }
 
-/* ---------- the climb (trail with stops) ---------- */
-.climb {
-  position: relative;
-  background: linear-gradient(#e8f5ff, #e7eefc 45%, #dcd9f5);
-  padding: 72px 0 40px;
-  overflow-x: clip;
-}
-.climb-intro { max-width: 36em; margin-bottom: 40px; }
-.climb-intro h2, .section-head h2 {
-  font-family: var(--display); font-weight: 400;
-  font-size: clamp(32px, 6vw, 48px); line-height: 1.15; margin: 0 0 12px;
-}
-.climb-intro p { margin: 0; color: var(--ink-soft); }
-
-.trail { position: relative; padding-left: 40px; }
-.trail::before {                      /* the dashed path */
-  content: ""; position: absolute; left: 11px; top: 8px; bottom: 0;
-  border-left: 4px dashed #c89b52;
-  opacity: .7;
-}
-@media (min-width: 900px) {
-  .trail { padding-left: 0; }
-  .trail::before { left: 50%; margin-left: -2px; }
-}
-
-.stop { position: relative; padding: 24px 0 72px; display: grid; gap: 28px; align-items: center; }
-.stop::before {                       /* trail stone */
-  content: ""; position: absolute; left: -38px; top: 30px;
-  width: 22px; height: 22px; border-radius: 50%;
-  background: var(--gold); border: 4px solid #fff;
-  box-shadow: 0 0 0 2px #c89b52;
-}
-@media (min-width: 900px) {
-  .stop { grid-template-columns: 1fr 1fr; gap: 96px; padding: 40px 0 96px; }
-  .stop::before { left: 50%; margin-left: -11px; top: 50%; }
-  .stop:nth-child(even) .copy { order: 2; }
-}
-.copy h3 {
-  font-family: var(--display); font-weight: 400;
-  font-size: clamp(28px, 5vw, 40px); line-height: 1.2; margin: 18px 0 12px;
-}
-.copy p { margin: 0 0 14px; max-width: 30em; }
-.copy ul { margin: 0; padding: 0; list-style: none; }
-.copy li { padding-left: 22px; position: relative; margin-bottom: 6px; color: var(--ink-soft); }
-.copy li::before {
-  content: ""; position: absolute; left: 2px; top: .7em; width: 8px; height: 8px;
-  background: var(--whale); border-radius: 2px; transform: rotate(45deg);
-}
-
-/* two overlapped phones — tap the front one to swap */
-.phones {
-  position: relative; height: 520px; max-width: 380px; width: 100%;
-  margin: 0 auto; border: 0; padding: 0; background: none; cursor: pointer;
-  font: inherit; color: inherit;
-}
-@media (max-width: 420px) { .phones { height: 460px; } }
-.phone {
-  position: absolute; width: 230px; aspect-ratio: 720 / 1406;
-  border-radius: 32px; overflow: hidden;
-  border: 9px solid #1d2230;
-  background: #1d2230;
-  box-shadow: 0 24px 50px -18px rgba(23,32,72,.55);
-  transition: transform .45s cubic-bezier(.2,.8,.2,1), z-index 0s .2s, filter .45s;
-}
-@media (max-width: 420px) { .phone { width: 200px; } }
-.phone img { width: 100%; height: 100%; object-fit: cover; }
-.phone.a { left: 0; top: 0; z-index: 2; transform: rotate(-4deg); }
-.phone.b { right: 0; top: 40px; z-index: 1; transform: rotate(5deg); filter: brightness(.9); }
-.phones.swapped .phone.a { z-index: 1; transform: rotate(-6deg) translateY(30px); filter: brightness(.9); }
-.phones.swapped .phone.b { z-index: 2; transform: rotate(3deg) translateY(-30px); filter: none; }
-.phones .hint {
-  position: absolute; left: 50%; bottom: -6px; transform: translateX(-50%);
-  font-size: 13px; color: var(--ink-soft); white-space: nowrap;
-}
-@media (prefers-reduced-motion: reduce) { .phone { transition: none; } }
-
-/* ---------- gates & armor ---------- */
-.gates {
+/* ---------- tier scale ---------- */
+.climb { background: var(--bg-2); }
+.climb .head { display: grid; gap: 16px; }
+@media (min-width: 960px) { .climb .head { grid-template-columns: 1fr 1fr; align-items: end; gap: 64px; } .climb .sub { margin: 0; } }
+.scale { margin-top: 64px; }
+.track {
+  position: relative; height: 56px;
+  /* 60 tier ticks */
   background:
-    radial-gradient(70% 50% at 50% 0%, rgba(111,231,196,.28) 0, rgba(111,231,196,0) 70%),
-    radial-gradient(50% 40% at 85% 20%, rgba(154,140,255,.25) 0, rgba(154,140,255,0) 70%),
-    linear-gradient(#dcd9f5 0, #8f93d0 60px, #3a4585 150px, var(--night) 320px, var(--night-2));
-  color: var(--snow-text);
-  padding: 140px 0 96px;
+    repeating-linear-gradient(90deg, #c7d0de 0 1px, transparent 1px calc(100% / 59.0001)) left 32px / 100% 12px no-repeat;
 }
-.section-head { max-width: 36em; margin-bottom: 36px; }
-.section-head p { margin: 0; opacity: .85; }
-.rail {
-  display: grid; grid-auto-flow: column; grid-auto-columns: 132px; gap: 8px;
-  overflow-x: auto; padding: 8px 4px 16px; margin: 0 calc(var(--gutter) * -1);
-  padding-left: var(--gutter); padding-right: var(--gutter);
-  scroll-snap-type: x proximity;
-  scrollbar-width: thin; scrollbar-color: #3b467e transparent;
+.track::before {           /* baseline */
+  content: ""; position: absolute; left: 0; right: 0; top: 44px; height: 1px; background: #c7d0de;
 }
-@media (min-width: 1100px) {
-  .rail { grid-auto-flow: row; grid-template-columns: repeat(6, 1fr); grid-auto-columns: auto; overflow: visible; margin: 0; padding: 8px 0; }
+.gate {
+  position: absolute; top: 20px; width: 2px; height: 24px; margin-left: -1px;
+  background: var(--ink);
+  left: calc((var(--t) - 1) / 59 * 100%);
 }
-.rail figure { margin: 0; text-align: center; scroll-snap-align: start; }
-.rail .pedestal {
-  aspect-ratio: 1; border-radius: 50% 50% 18px 18px;
-  background: radial-gradient(circle at 50% 75%, #2f3a78, #1b2455 70%);
-  display: grid; place-items: center; padding: 8px;
+.gate::after {             /* gate cap */
+  content: ""; position: absolute; left: 50%; top: -7px; width: 10px; height: 10px; margin-left: -5px;
+  border-radius: 50%; background: var(--bg-2); border: 2px solid var(--ink);
 }
-.rail figcaption { font-size: 14px; margin-top: 8px; opacity: .8; }
-.rail figcaption b { font-family: var(--display); font-weight: 400; font-size: 17px; color: var(--gold); opacity: 1; display: block; }
+.gate.top { background: var(--accent); }
+.gate.top::after { border-color: var(--accent); background: var(--accent); }
+.me {
+  position: absolute; left: 0; bottom: 12px; width: 40px; height: auto; margin-left: -6px; z-index: 1;
+}
+.labels { position: relative; height: 22px; margin-top: 8px; font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.labels span { position: absolute; transform: translateX(-50%); left: calc((var(--t) - 1) / 59 * 100%); }
+.labels span:first-child { transform: none; }
+.labels span:last-child { transform: translateX(-100%); color: var(--accent-2); font-weight: 600; }
+@media (max-width: 639px) { .labels .odd { display: none; } .me { width: 30px; margin-left: -10px; } }
+.ends { display: flex; justify-content: space-between; margin-top: 20px; font-size: 15px; }
+.ends b { font-weight: 600; }
+.ends span { color: var(--ink-3); margin-left: 8px; }
 
-.armor-head { margin-top: 72px; }
-.armor {
-  display: flex; align-items: flex-end; gap: 0;
-  overflow-x: auto; padding: 8px var(--gutter) 12px; margin: 0 calc(var(--gutter) * -1);
-  scrollbar-width: thin; scrollbar-color: #3b467e transparent;
+/* ---------- features ---------- */
+.features .sub { margin-bottom: 56px; }
+.show { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
+  margin: 0 calc(var(--gutter) * -1); padding: 8px var(--gutter) 24px; scrollbar-width: none; }
+.show::-webkit-scrollbar { display: none; }
+.feat { flex: 0 0 min(78%, 300px); scroll-snap-align: start; display: flex; flex-direction: column; gap: 24px; }
+.feat figure { margin: 0; order: -1; background: var(--bg-2); border-radius: 24px; padding: 32px 0 0; overflow: hidden; height: 380px; }
+.feat figure .phone { width: 220px; margin: 0 auto; }
+.feat button { all: unset; display: block; cursor: default; }
+.feat h3 { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 6px; }
+.feat p { margin: 0; font-size: 15px; color: var(--ink-2); line-height: 1.65; }
+
+@media (min-width: 960px) {
+  .features .sub { margin-bottom: 72px; }
+  .show {
+    display: grid; overflow: visible; margin: 0; padding: 0;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    grid-template-rows: repeat(5, auto) 1fr;
+    column-gap: 64px;
+  }
+  .feat { display: contents; }
+  .feat button {
+    grid-column: 1; cursor: pointer; border-radius: 16px;
+    padding: 22px 24px 22px 26px; position: relative;
+    transition: background .2s;
+  }
+  .feat button::before {
+    content: ""; position: absolute; left: 0; top: 24px; bottom: 24px; width: 2px; border-radius: 2px; background: transparent;
+  }
+  .feat button:hover { background: var(--bg-2); }
+  .feat h3 { color: var(--ink-3); transition: color .2s; margin: 0; }
+  .feat p { max-height: 0; opacity: 0; overflow: hidden; transition: max-height .35s ease, opacity .25s ease, margin .35s; }
+  .feat.on button::before { background: var(--accent); }
+  .feat.on h3 { color: var(--ink); }
+  .feat.on p { max-height: 8em; opacity: 1; margin-top: 8px; }
+  .feat figure {
+    grid-column: 2; grid-row: 1 / -1; height: 640px; padding: 56px 0 0; border-radius: 32px;
+    opacity: 0; visibility: hidden; transform: translateY(12px);
+    transition: opacity .35s ease, transform .45s cubic-bezier(.2,.7,.2,1), visibility 0s .35s;
+  }
+  .feat.on figure { opacity: 1; visibility: visible; transform: none; transition: opacity .35s ease, transform .45s cubic-bezier(.2,.7,.2,1), visibility 0s; }
+  .feat figure .phone { width: 300px; }
 }
-.armor img { width: 92px; flex: none; margin-right: -14px; }
-.armor img:nth-child(n) { transform: translateY(calc(var(--i) * -3px)); }
-@media (min-width: 1100px) { .armor { overflow: visible; margin: 0; padding: 8px 0 12px; } .armor img { flex: 1 1 0; min-width: 0; width: auto; margin: 0 -6px 0 0; } }
+@media (prefers-reduced-motion: reduce) { .feat figure, .feat p, .feat h3 { transition: none !important; } }
 
-/* ---------- small things every day ---------- */
-.daily { background: var(--night-2); color: var(--snow-text); padding: 24px 0 96px; }
-.daily-grid { display: grid; gap: 28px; }
-@media (min-width: 800px) { .daily-grid { grid-template-columns: repeat(3, 1fr); gap: 40px; } }
-.daily-item { border-top: 2px solid #2e3a78; padding-top: 20px; }
-.daily-item svg { width: 30px; height: 30px; color: var(--aurora); margin-bottom: 10px; }
-.daily-item h3 { font-family: var(--display); font-weight: 400; font-size: 24px; margin: 0 0 6px; }
-.daily-item p { margin: 0; opacity: .82; font-size: 16px; }
-
-/* ---------- goal ---------- */
-.goal { background: var(--belly); padding: 88px 0; }
-.goal .wrap { display: grid; gap: 32px; align-items: center; }
-@media (min-width: 800px) { .goal .wrap { grid-template-columns: 220px 1fr; gap: 56px; } }
-.goal img { width: 150px; margin: 0 auto; }
-@media (min-width: 800px) { .goal img { width: 200px; } }
-.goal h2 { font-family: var(--display); font-weight: 400; font-size: clamp(30px, 5.5vw, 44px); line-height: 1.2; margin: 0 0 14px; }
-.goal p { margin: 0 0 10px; max-width: 34em; }
-
-/* ---------- peak CTA ---------- */
-.peak {
-  position: relative; color: #fff; text-align: center;
-  padding: 120px 0 110px;
-  background: linear-gradient(rgba(15,22,54,.55), rgba(15,22,54,.85)), url(images/mountain-night.webp) center 30% / cover no-repeat, var(--night);
-}
-.peak img.whale { width: 150px; margin: 0 auto 10px; filter: drop-shadow(0 10px 20px rgba(0,0,0,.4)); }
-.peak h2 { font-family: var(--display); font-weight: 400; font-size: clamp(36px, 7vw, 60px); line-height: 1.1; margin: 0 0 14px; }
-.peak p { margin: 0 auto 30px; max-width: 26em; opacity: .9; }
-.peak .soon { background: #fff; color: var(--ink); }
-
-/* ---------- footer ---------- */
-footer.site { background: var(--night-2); color: #aab4d6; font-size: 14px; padding: 36px 0 48px; }
-footer.site .wrap { display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; justify-content: space-between; }
-footer.site a { color: #dfe6ff; text-decoration: none; }
-footer.site a:hover { text-decoration: underline; }
-footer.site .links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
-footer.site .wordmark { color: #fff; font-size: 19px; }
+/* ---------- goal + closing ---------- */
+.goal { padding-top: 0; }
+.goal .wrap { border-top: 1px solid var(--line); padding-top: 96px; }
+@media (min-width: 960px) { .goal .wrap { padding-top: 136px; } }
+.goal .inner { display: grid; gap: 48px; }
+@media (min-width: 960px) { .goal .inner { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 64px; align-items: end; } }
+.goal h2 { font-size: clamp(28px, 4vw, 42px); line-height: 1.3; }
+.goal .sub { margin-top: 20px; }
+.facts { margin: 0; display: grid; gap: 0; font-size: 15px; }
+.facts div { display: grid; grid-template-columns: 6.5em 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid var(--line); }
+.facts div:last-child { border-bottom: 1px solid var(--line); }
+.facts dt { color: var(--ink-3); }
+.facts dd { margin: 0; font-weight: 500; }
+.goal .soon { margin-top: 32px; }
 </style>
 </head>
 <body>
 
-<header class="top">
+<header class="site-head">
   <div class="wrap">
-    <a class="wordmark" href="./"><img src="images/whale-happy.webp" alt="" width="36" height="36">iamaforeigner</a>
+    <a class="wordmark" href="./"><img src="images/icon.png" alt="" width="28" height="28">iamaforeigner</a>
     <nav>
-      <a class="opt" href="#climb">둘러보기</a>
+      <a class="opt" href="#features">기능</a>
       <a href="privacy.html">개인정보 처리방침</a>
     </nav>
   </div>
@@ -268,205 +179,77 @@ footer.site .wordmark { color: #fff; font-size: 19px; }
 <main>
 <section class="hero">
   <div class="wrap">
-    <div>
-      <h1><span class="line">한마디씩 말하면</span><span class="line">산을 오릅니다</span></h1>
-      <p class="lede">고래 기사와 함께 <strong>영어와 일본어 일상 회화</strong>를 익히는 앱이에요. tier 1 산기슭에서 tier 60 정상까지, 오늘 할 만큼만 말하고 한 걸음씩 올라가요.</p>
-      <div class="cta-row">
-        <span class="soon" aria-label="Google Play 출시 예정">
+    <div class="copy">
+      <h1><span>한마디씩 말하면</span><span>산을 오릅니다</span></h1>
+      <p class="lede">고래 기사와 함께 영어와 일본어 일상 회화를 익히는 앱. tier 1 산기슭에서 tier 60 정상까지, 하루에 할 만큼만 말하며 올라가요.</p>
+      <div class="actions">
+        <span class="soon" role="img" aria-label="Google Play 출시 예정">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 6 3.5z"/></svg>
-          Google Play 출시 예정
+          Google Play <small>출시 예정</small>
         </span>
-        <a class="ghost" href="#climb">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M5 13l7 7 7-7"/></svg>
-          산길 둘러보기
+        <a class="textlink" href="#features">기능 둘러보기
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
         </a>
       </div>
     </div>
-    <div class="gate-wrap">
-      <div class="gate"><img src="images/hero-splash.webp" alt="모자를 쓰고 배낭을 멘 고래가 정상의 빛나는 관문으로 이어진 산길을 걷고 있다" width="820" height="1230" fetchpriority="high"></div>
-      <span class="sign tag">산기슭 tier 1</span>
+    <div class="visual">
+      <div class="art"><img src="images/hero-splash.webp" alt="모자를 쓰고 배낭을 멘 고래가 정상의 빛나는 관문으로 이어진 산길을 걷고 있다" width="820" height="1230" fetchpriority="high"></div>
+      <div class="phone"><img src="images/shot-mountain-1.webp" alt="앱 홈 화면: 실력의 산 지도와 오늘의 음성 일기, 오늘의 미션" width="480" height="937"></div>
     </div>
   </div>
 </section>
 
-<section class="climb" id="climb">
+<section class="climb" aria-labelledby="climb-title">
   <div class="wrap">
-    <div class="climb-intro">
-      <h2>산길을 따라 걸어 볼까요</h2>
-      <p>앱 안의 모든 기능은 산 위의 한 장소예요. 아래 화면은 전부 실제 기기에서 찍었습니다.</p>
+    <div class="head">
+      <h2 id="climb-title">정상까지 60 tier,<br>관문은 12개</h2>
+      <p class="sub">공부한 만큼 경험치가 쌓이고 한 칸씩 올라갑니다. 5 tier마다 보스가 길을 막고, 이기면 다음 구간이 열려요.</p>
     </div>
-
-    <div class="trail">
-
-      <article class="stop">
-        <div class="copy">
-          <span class="sign">산기슭</span>
-          <h3>실력의 산</h3>
-          <p>홈 화면이 곧 지도예요. 공부한 만큼 경험치가 쌓이고, 고래가 tier 1부터 60까지 한 칸씩 올라갑니다.</p>
-          <ul>
-            <li>오늘 얼마나 올랐는지 한눈에</li>
-            <li>밤에는 고래도 야영하며 쉬어요</li>
-          </ul>
-        </div>
-        <button class="phones" type="button" aria-label="실력의 산 화면 두 장, 눌러서 바꿔 보기">
-          <span class="phone a"><img src="images/shot-mountain-1.webp" alt="홈 화면: 실력의 산 지도와 오늘의 음성 일기, 오늘의 미션" loading="lazy" width="480" height="937"></span>
-          <span class="phone b"><img src="images/shot-mountain-2.webp" alt="밤 시간의 홈 화면: 텐트 옆에서 쉬는 고래" loading="lazy" width="480" height="937"></span>
-          <span class="hint">눌러서 다른 화면 보기</span>
-        </button>
-      </article>
-
-      <article class="stop">
-        <div class="copy">
-          <span class="sign">오늘의 길</span>
-          <h3>오늘의 미션</h3>
-          <p>매일 새로 깔리는 짧은 길이에요. 단어, 숙어, 문법, 문장 말하기를 차례로 지나면 하루 공부가 끝납니다.</p>
-          <ul>
-            <li>나에게 맞는 tier의 새 단어와 복습 단어</li>
-            <li>끝까지 걸으면 경험치 보상</li>
-          </ul>
-        </div>
-        <button class="phones" type="button" aria-label="오늘의 미션 화면 두 장, 눌러서 바꿔 보기">
-          <span class="phone a"><img src="images/shot-mission-1.webp" alt="오늘의 미션: 숲길 위에 놓인 단계 표시" loading="lazy" width="480" height="937"></span>
-          <span class="phone b"><img src="images/shot-mission-2.webp" alt="오늘의 미션 길의 이어지는 라운드" loading="lazy" width="480" height="937"></span>
-          <span class="hint">눌러서 다른 화면 보기</span>
-        </button>
-      </article>
-
-      <article class="stop">
-        <div class="copy">
-          <span class="sign">선생님 오두막</span>
-          <h3>AI 튜터에게 질문</h3>
-          <p>"brand new가 정확히 무슨 느낌이에요?" 같은 질문을 편하게 던지세요. 초등학교 선생님부터 원어민 친구까지, 말투가 다른 선생님을 골라 물어볼 수 있어요.</p>
-          <ul>
-            <li>뜻, 쓰임새, 예문까지 한 번에</li>
-            <li>지난 질문은 모아 두고 다시 보기</li>
-          </ul>
-        </div>
-        <button class="phones" type="button" aria-label="AI 튜터 화면 두 장, 눌러서 바꿔 보기">
-          <span class="phone a"><img src="images/shot-tutor-2.webp" alt="튜터 답변: brand new의 의미와 사용 예시" loading="lazy" width="480" height="937"></span>
-          <span class="phone b"><img src="images/shot-tutor-1.webp" alt="선생님 고르기와 지난 질문 목록" loading="lazy" width="480" height="937"></span>
-          <span class="hint">눌러서 다른 화면 보기</span>
-        </button>
-      </article>
-
-      <article class="stop">
-        <div class="copy">
-          <span class="sign">마을</span>
-          <h3>프리톡</h3>
-          <p>마을 사람들에게 목소리로 말을 걸어요. 병원에서 증상 말하기, 식당에서 주문하기, 공항에서 길 묻기처럼 진짜 있을 법한 상황에서 대화가 이어집니다.</p>
-          <ul>
-            <li>탭하고 말하면 끝, 멈추면 알아서 전송</li>
-            <li>상대 말은 다시 듣고 번역도 볼 수 있어요</li>
-          </ul>
-        </div>
-        <button class="phones" type="button" aria-label="프리톡 화면 두 장, 눌러서 바꿔 보기">
-          <span class="phone a"><img src="images/shot-freetalk-2.webp" alt="프리톡 대화: 병원 진료받기 상황에서 치유사와 영어로 대화" loading="lazy" width="480" height="937"></span>
-          <span class="phone b"><img src="images/shot-freetalk-1.webp" alt="밤의 마을 지도 위에 흩어진 대화 상대들" loading="lazy" width="480" height="937"></span>
-          <span class="hint">눌러서 다른 화면 보기</span>
-        </button>
-      </article>
-
-      <article class="stop">
-        <div class="copy">
-          <span class="sign">훈련장</span>
-          <h3>공부하기</h3>
-          <p>뜻 맞추기, 받아쓰기, 빈칸 채우기, 가로세로 퍼즐까지 여러 방식으로 단어를 익혀요. 헷갈린 단어는 잊을 때쯤 다시 나오도록 간격을 두고 복습시켜 줍니다.</p>
-          <ul>
-            <li>틀린 단어만 모아 다시 풀기</li>
-            <li>배운 단어와 말해 본 문장은 노트에 차곡차곡</li>
-          </ul>
-        </div>
-        <button class="phones" type="button" aria-label="공부하기 화면 두 장, 눌러서 바꿔 보기">
-          <span class="phone a"><img src="images/shot-study-1.webp" alt="공부하기: 학습 방법 선택 화면" loading="lazy" width="480" height="937"></span>
-          <span class="phone b"><img src="images/shot-study-2.webp" alt="플래시카드로 뜻 떠올리기" loading="lazy" width="480" height="937"></span>
-          <span class="hint">눌러서 다른 화면 보기</span>
-        </button>
-      </article>
-
-      <article class="stop">
-        <div class="copy">
-          <span class="sign">관문</span>
-          <h3>보스전</h3>
-          <p>5 tier마다 길을 막는 보스가 있어요. 그동안 배운 단어로 문제를 맞힐 때마다 공격이 들어갑니다. 이기면 관문이 열리고, 고래는 새 갑옷을 입어요.</p>
-          <ul>
-            <li>내가 실제로 공부한 단어에서 출제</li>
-            <li>자신 있으면 관문을 건너뛰는 도전도 가능</li>
-          </ul>
-        </div>
-        <button class="phones" type="button" aria-label="보스전 화면 두 장, 눌러서 바꿔 보기">
-          <span class="phone a"><img src="images/shot-boss-1.webp" alt="보스전: feel의 뜻을 네 개의 보기 중에서 고르는 전투" loading="lazy" width="480" height="937"></span>
-          <span class="phone b"><img src="images/shot-boss-2.webp" alt="폭포 앞에서 보스가 고래를 막아서는 장면" loading="lazy" width="480" height="937"></span>
-          <span class="hint">눌러서 다른 화면 보기</span>
-        </button>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<section class="gates" aria-labelledby="gates-title">
-  <div class="wrap">
-    <div class="section-head">
-      <h2 id="gates-title">정상까지 관문 열두 개</h2>
-      <p>tier 5부터 60까지, 관문마다 다른 보스가 기다려요. 뒤로 갈수록 더 단단해집니다.</p>
-    </div>
-    <div class="rail" tabindex="0" aria-label="보스 열두 명, 가로로 넘겨 보기">
-      <figure><div class="pedestal"><img src="images/boss01.webp" alt="주술사 고블린" loading="lazy" width="220" height="220"></div><figcaption><b>tier 5</b></figcaption></figure>
-      <figure><div class="pedestal"><img src="images/boss02.webp" alt="멧돼지 산적" loading="lazy" width="220" height="220"></div><figcaption><b>tier 10</b></figcaption></figure>
-      <figure><div class="pedestal"><img src="images/boss03.webp" alt="살쾡이 검객" loading="lazy" width="220" height="220"></div><figcaption><b>tier 15</b></figcaption></figure>
-      <figure><div class="pedestal"><img src="images/boss04.webp" alt="방패 든 오크" loading="lazy" width="220" height="220"></div><figcaption><b>tier 20</b></figcaption></figure>
-      <figure><div class="pedestal"><img src="images/boss05.webp" alt="철퇴 든 오크 전사" loading="lazy" width="220" height="220"></div><figcaption><b>tier 25</b></figcaption></figure>
-      <figure><div class="pedestal"><img src="images/boss06.webp" alt="돌 골렘 기사" loading="lazy" width="220" height="220"></div><figcaption><b>tier 30</b></figcaption></figure>
-      <figure><div class="pedestal"><img src="images/boss07.webp" alt="흑기사" loading="lazy" width="220" height="220"></div><figcaption><b>tier 35</b></figcaption></figure>
-      <figure><div class="pedestal"><img src="images/boss08.webp" alt="붉은 용 기사" loading="lazy" width="220" height="220"></div><figcaption><b>tier 40</b></figcaption></figure>
-      <figure><div class="pedestal"><img src="images/boss09.webp" alt="용암 갑옷 전사" loading="lazy" width="220" height="220"></div><figcaption><b>tier 45</b></figcaption></figure>
-      <figure><div class="pedestal"><img src="images/boss10.webp" alt="얼음 왕" loading="lazy" width="220" height="220"></div><figcaption><b>tier 50</b></figcaption></figure>
-      <figure><div class="pedestal"><img src="images/boss11.webp" alt="날개 달린 성기사" loading="lazy" width="220" height="220"></div><figcaption><b>tier 55</b></figcaption></figure>
-      <figure><div class="pedestal"><img src="images/boss12.webp" alt="황금 갑옷의 마왕" loading="lazy" width="220" height="220"></div><figcaption><b>tier 60</b></figcaption></figure>
-    </div>
-
-    <div class="section-head armor-head">
-      <h2>누더기에서 황금 갑옷까지</h2>
-      <p>관문을 하나 넘을 때마다 옷이 바뀌어요. 산기슭의 누더기 차림이 정상에 가까워질수록 빛나기 시작합니다.</p>
-    </div>
-    <div class="armor" aria-label="고래 기사의 복장 열세 벌">
-      <img style="--i:0" src="images/armor-t01.webp" alt="몽둥이를 든 첫 복장" loading="lazy" width="180" height="180">
-      <img style="--i:1" src="images/armor-t02.webp" alt="" loading="lazy" width="180" height="180">
-      <img style="--i:2" src="images/armor-t03.webp" alt="" loading="lazy" width="180" height="180">
-      <img style="--i:3" src="images/armor-t04.webp" alt="" loading="lazy" width="180" height="180">
-      <img style="--i:4" src="images/armor-t05.webp" alt="" loading="lazy" width="180" height="180">
-      <img style="--i:5" src="images/armor-t06.webp" alt="" loading="lazy" width="180" height="180">
-      <img style="--i:6" src="images/armor-t07.webp" alt="" loading="lazy" width="180" height="180">
-      <img style="--i:7" src="images/armor-t08.webp" alt="" loading="lazy" width="180" height="180">
-      <img style="--i:8" src="images/armor-t09.webp" alt="" loading="lazy" width="180" height="180">
-      <img style="--i:9" src="images/armor-t10.webp" alt="" loading="lazy" width="180" height="180">
-      <img style="--i:10" src="images/armor-t11.webp" alt="" loading="lazy" width="180" height="180">
-      <img style="--i:11" src="images/armor-t12.webp" alt="" loading="lazy" width="180" height="180">
-      <img style="--i:12" src="images/armor-t13.webp" alt="불꽃처럼 빛나는 황금 갑옷의 마지막 복장" loading="lazy" width="180" height="180">
-    </div>
-  </div>
-</section>
-
-<section class="daily" aria-labelledby="daily-title">
-  <div class="wrap">
-    <div class="section-head">
-      <h2 id="daily-title" style="font-family:var(--display);font-weight:400;font-size:clamp(28px,5vw,40px);line-height:1.2;margin:0 0 10px">매일 조금씩 쌓이는 것들</h2>
-    </div>
-    <div class="daily-grid">
-      <div class="daily-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h7M8.5 14h4"/></svg>
-        <h3>오늘의 문장</h3>
-        <p>고래가 말풍선으로 하루 한 문장을 건네요. 먼저 말해 보고, 정답과 비교하고, 따라 말하면 끝.</p>
+    <div class="scale" aria-hidden="true">
+      <div class="track">
+        <img class="me" src="images/whale-happy.webp" alt="" width="360" height="351" loading="lazy">
+        <i class="gate" style="--t:5"></i><i class="gate" style="--t:10"></i><i class="gate" style="--t:15"></i>
+        <i class="gate" style="--t:20"></i><i class="gate" style="--t:25"></i><i class="gate" style="--t:30"></i>
+        <i class="gate" style="--t:35"></i><i class="gate" style="--t:40"></i><i class="gate" style="--t:45"></i>
+        <i class="gate" style="--t:50"></i><i class="gate" style="--t:55"></i><i class="gate top" style="--t:60"></i>
       </div>
-      <div class="daily-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3V4z"/><path d="M5 17a3 3 0 0 1 3-3h11"/><path d="M9 8h6"/></svg>
-        <h3>노트</h3>
-        <p>저장한 단어와, 내가 직접 말해서 통과한 문장이 날짜순으로 모여요. 다시 듣고 다시 말해 볼 수 있어요.</p>
+      <div class="labels">
+        <span style="--t:1">1</span>
+        <span class="odd" style="--t:5">5</span><span style="--t:10">10</span><span class="odd" style="--t:15">15</span>
+        <span style="--t:20">20</span><span class="odd" style="--t:25">25</span><span style="--t:30">30</span>
+        <span class="odd" style="--t:35">35</span><span style="--t:40">40</span><span class="odd" style="--t:45">45</span>
+        <span style="--t:50">50</span><span class="odd" style="--t:55">55</span><span style="--t:60">60</span>
       </div>
-      <div class="daily-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
-        <h3>음성 일기</h3>
-        <p>오늘 있었던 일을 편하게 말하면, 더 자연스러운 표현으로 고쳐서 보여 줘요.</p>
+    </div>
+    <div class="ends"><p style="margin:0"><b>산기슭</b><span>tier 1</span></p><p style="margin:0"><b>정상</b><span>tier 60</span></p></div>
+  </div>
+</section>
+
+<section class="features" id="features" aria-labelledby="features-title">
+  <div class="wrap">
+    <h2 id="features-title">매일 조금씩, 말로 익혀요</h2>
+    <p class="sub">화면은 모두 실제 기기에서 찍었습니다.</p>
+
+    <div class="show">
+      <div class="feat on">
+        <button type="button" aria-pressed="true"><h3>오늘의 미션</h3><p>단어, 숙어, 문법, 말하기로 이어지는 하루치 길. 새 단어와 복습할 단어를 알맞게 섞어 줍니다.</p></button>
+        <figure><div class="phone"><img src="images/shot-mission-1.webp" alt="오늘의 미션: 숲길 위에 놓인 단계 표시" width="480" height="937" loading="lazy"></div></figure>
+      </div>
+      <div class="feat">
+        <button type="button" aria-pressed="false"><h3>AI 튜터</h3><p>궁금한 단어나 표현을 편하게 물어보세요. 뜻과 쓰임, 예문까지 한 번에 알려 줍니다.</p></button>
+        <figure><div class="phone"><img src="images/shot-tutor-2.webp" alt="AI 튜터 답변: brand new의 의미와 사용 예시" width="480" height="937" loading="lazy"></div></figure>
+      </div>
+      <div class="feat">
+        <button type="button" aria-pressed="false"><h3>프리톡</h3><p>마을 사람에게 목소리로 말을 걸어요. 병원, 식당, 공항처럼 실제로 겪을 상황에서 대화가 이어집니다.</p></button>
+        <figure><div class="phone"><img src="images/shot-freetalk-2.webp" alt="프리톡 대화: 병원 진료받기 상황에서 치유사와 영어로 대화" width="480" height="937" loading="lazy"></div></figure>
+      </div>
+      <div class="feat">
+        <button type="button" aria-pressed="false"><h3>복습과 노트</h3><p>퀴즈, 받아쓰기, 퍼즐로 익히고 잊을 때쯤 다시 풀어요. 배운 단어와 말해 본 문장은 노트에 모입니다.</p></button>
+        <figure><div class="phone"><img src="images/shot-study-1.webp" alt="공부하기: 학습 방법 선택 화면" width="480" height="937" loading="lazy"></div></figure>
+      </div>
+      <div class="feat">
+        <button type="button" aria-pressed="false"><h3>보스전</h3><p>관문을 지키는 보스와 퀴즈로 겨뤄요. 문제는 내가 실제로 공부한 단어에서 나옵니다.</p></button>
+        <figure><div class="phone"><img src="images/shot-boss-1.webp" alt="보스전: feel의 뜻을 네 개의 보기 중에서 고르는 전투" width="480" height="937" loading="lazy"></div></figure>
       </div>
     </div>
   </div>
@@ -474,31 +257,28 @@ footer.site .wordmark { color: #fff; font-size: 19px; }
 
 <section class="goal" aria-labelledby="goal-title">
   <div class="wrap">
-    <img src="images/whale-ragged-hero.webp" alt="누더기 옷을 입은 산기슭의 고래" loading="lazy" width="360" height="360">
-    <div>
-      <h2 id="goal-title">목표는 원어민이 아니라 일상 회화예요</h2>
-      <p>여행지에서 길을 묻고, 식당에서 주문하고, 처음 만난 사람과 몇 마디 나눌 수 있는 정도. 그 지점까지 가장 덜 지루한 길을 만드는 것이 이 앱의 목표입니다.</p>
-      <p>지금은 영어와 일본어를 배울 수 있어요.</p>
+    <div class="inner">
+      <div>
+        <h2 id="goal-title">목표는 원어민이 아니라<br>일상 회화입니다</h2>
+        <p class="sub">여행지에서 길을 묻고, 식당에서 주문하고, 처음 만난 사람과 몇 마디 나누는 정도. 그 지점까지 가장 덜 지루한 길을 만들고 있어요.</p>
+        <span class="soon" role="img" aria-label="Google Play 출시 예정">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 6 3.5z"/></svg>
+          Google Play <small>출시 예정</small>
+        </span>
+      </div>
+      <dl class="facts">
+        <div><dt>배우는 언어</dt><dd>영어, 일본어</dd></div>
+        <div><dt>플랫폼</dt><dd>Android</dd></div>
+        <div><dt>운영</dt><dd>WHALE LAB</dd></div>
+      </dl>
     </div>
-  </div>
-</section>
-
-<section class="peak" aria-labelledby="peak-title">
-  <div class="wrap">
-    <img class="whale" src="images/whale-go.webp" alt="" loading="lazy" width="360" height="360">
-    <h2 id="peak-title">정상에서 기다릴게요</h2>
-    <p>곧 Google Play에서 만날 수 있어요. 출시 소식은 이 페이지에 가장 먼저 올라옵니다.</p>
-    <span class="soon" aria-label="Google Play 출시 예정">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 6 3.5z"/></svg>
-      Google Play 출시 예정
-    </span>
   </div>
 </section>
 </main>
 
-<footer class="site">
+<footer class="site-foot">
   <div class="wrap">
-    <a class="wordmark" href="./"><img src="images/whale-happy.webp" alt="" width="36" height="36">iamaforeigner</a>
+    <a class="wordmark" href="./"><img src="images/icon.png" alt="" width="28" height="28">iamaforeigner</a>
     <div class="links">
       <a href="privacy.html">개인정보 처리방침</a>
       <a href="privacy.html#delete-account">계정 삭제 요청</a>
@@ -508,9 +288,22 @@ footer.site .wordmark { color: #fff; font-size: 19px; }
 </footer>
 
 <script>
-  document.querySelectorAll('.phones').forEach(function (b) {
-    b.addEventListener('click', function () { b.classList.toggle('swapped'); });
+(function () {
+  var head = document.querySelector('.site-head');
+  var onScroll = function () { head.classList.toggle('scrolled', window.scrollY > 8); };
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  var feats = document.querySelectorAll('.feat');
+  feats.forEach(function (f) {
+    f.querySelector('button').addEventListener('click', function () {
+      feats.forEach(function (g) {
+        var on = g === f;
+        g.classList.toggle('on', on);
+        g.querySelector('button').setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+    });
   });
+})();
 </script>
 </body>
 </html>

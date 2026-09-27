@@ -5,108 +5,112 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>개인정보 처리방침 — iamaforeigner</title>
 <meta name="description" content="iamaforeigner 개인정보 처리방침과 계정 삭제 요청 방법">
-<meta name="theme-color" content="#172048">
+<meta name="theme-color" content="#ffffff">
 <link rel="icon" href="images/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jua&family=IBM+Plex+Sans+KR:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-body { background: var(--paper); font-size: 16px; line-height: 1.8; }
+body { font-size: 16px; line-height: 1.8; }
 
-.doc-top {
-  background:
-    radial-gradient(60% 80% at 80% 0%, rgba(111,231,196,.22) 0, rgba(111,231,196,0) 70%),
-    linear-gradient(var(--night), #26306a);
-  color: var(--snow-text);
-  padding: 20px 0 56px;
-}
-.doc-top .bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 44px; }
-.doc-top .wordmark { color: #fff; font-size: 20px; }
-.doc-top .bar a.back { color: #cdd6f5; font-size: 15px; text-decoration: none; }
-.doc-top .bar a.back:hover { text-decoration: underline; }
-.doc-top h1 { font-family: var(--display); font-weight: 400; font-size: clamp(36px, 8vw, 56px); line-height: 1.1; margin: 0 0 14px; }
-.doc-top p { margin: 0; max-width: 40em; opacity: .9; }
-.doc-top .ph { color: #5a4300; }
+.doc-top { padding: 56px 0 40px; border-bottom: 1px solid var(--line); }
+@media (min-width: 1000px) { .doc-top { padding: 88px 0 56px; } }
+.doc-top h1 { font-size: clamp(34px, 5vw, 52px); font-weight: 700; letter-spacing: -0.035em; line-height: 1.15; margin: 0 0 20px; }
+.doc-top p { margin: 0; max-width: 44em; color: var(--ink-2); }
+.doc-top p + p { font-size: 14px; color: var(--ink-3); }
 
-.doc { display: grid; gap: 32px; padding-top: 40px; padding-bottom: 96px; }
+.doc { display: grid; gap: 32px; padding-top: 32px; padding-bottom: 112px; }
 @media (min-width: 1000px) {
-  .doc { grid-template-columns: 250px minmax(0, 1fr); gap: 64px; }
+  .doc { grid-template-columns: 240px minmax(0, 1fr); gap: 80px; padding-top: 56px; }
 }
 
 /* table of contents */
-.toc { font-size: 15px; }
-.toc details { background: #fff; border: 1px solid #d9e3f3; border-radius: 12px; padding: 12px 16px; }
-.toc summary { font-family: var(--display); font-size: 18px; cursor: pointer; }
-.toc ol { margin: 10px 0 0; padding-left: 1.5em; }
-.toc li { margin: 4px 0; }
-.toc a { color: var(--ink); text-decoration: none; }
-.toc a:hover { color: var(--whale-deep); text-decoration: underline; }
-.toc li.hl a { font-weight: 600; color: var(--whale-deep); }
+.toc { font-size: 14px; line-height: 1.5; }
+.toc details { border: 1px solid var(--line); border-radius: 14px; padding: 14px 18px; background: var(--bg-2); }
+.toc summary { font-weight: 600; cursor: pointer; color: var(--ink); }
+.toc ol { margin: 12px 0 2px; padding-left: 1.6em; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.toc li { margin: 0; padding: 5px 0; }
+.toc a { color: var(--ink-2); text-decoration: none; }
+.toc a:hover { color: var(--ink); }
+.toc a.cur { color: var(--accent-2); font-weight: 600; }
+.toc li.hl a { color: var(--accent-2); font-weight: 600; }
 @media (min-width: 1000px) {
-  .toc { position: sticky; top: 24px; align-self: start; }
-  .toc details { background: none; border: 0; padding: 0; }
-  .toc summary { list-style: none; pointer-events: none; margin-bottom: 6px; }
+  .toc { position: sticky; top: calc(var(--header-h) + 32px); align-self: start; }
+  .toc details { border: 0; padding: 0; background: none; }
+  .toc summary { list-style: none; pointer-events: none; font-size: 13px; color: var(--ink-3); font-weight: 500; margin-bottom: 4px; }
   .toc summary::-webkit-details-marker { display: none; }
+  .toc ol { border-left: 1px solid var(--line); padding-left: 0; list-style: none; margin: 8px 0 0; }
+  .toc li { padding: 0; }
+  .toc a { display: block; padding: 6px 0 6px 16px; margin-left: -1px; border-left: 2px solid transparent; }
+  .toc a.cur { border-left-color: var(--accent); }
 }
 
-.body { max-width: 46em; min-width: 0; }
-.body section { scroll-margin-top: 20px; padding-bottom: 12px; }
+.body { max-width: 44em; min-width: 0; }
+.body section { padding-bottom: 8px; }
+.body section + section { border-top: 1px solid var(--line); margin-top: 40px; padding-top: 40px; }
 .body h2 {
-  font-family: var(--display); font-weight: 400;
-  font-size: 26px; line-height: 1.3;
-  margin: 40px 0 14px;
-  display: flex; gap: 12px; align-items: baseline;
+  font-size: 22px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.4;
+  margin: 0 0 16px; display: flex; gap: 10px; align-items: baseline;
 }
-.body h2 .n { color: var(--whale); min-width: 1.4em; }
-.body section:first-child h2 { margin-top: 0; }
-.body p { margin: 0 0 12px; }
-.body ul { margin: 0 0 14px; padding-left: 1.3em; }
+.body h2 .n { color: var(--ink-3); font-weight: 500; font-variant-numeric: tabular-nums; min-width: 1.6em; }
+.body p { margin: 0 0 12px; color: var(--ink); }
+.body ul { margin: 0 0 14px; padding-left: 1.2em; }
 .body li { margin-bottom: 6px; }
+.body li::marker { color: var(--ink-3); }
 .body strong { font-weight: 600; }
 
-.table-scroll { overflow-x: auto; margin: 6px 0 18px; border: 1px solid #d9e3f3; border-radius: 12px; background: #fff; }
-table { border-collapse: collapse; width: 100%; font-size: 15px; line-height: 1.6; }
-th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid #e6ecf7; }
-th { background: #eaf2fe; font-weight: 600; white-space: nowrap; }
+/* tables: grid on wide screens, stacked rows on phones */
+.table-scroll { margin: 8px 0 20px; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; line-height: 1.65; }
+th, td { text-align: left; vertical-align: top; padding: 12px 16px; border-bottom: 1px solid var(--line); }
+th { background: var(--bg-2); font-weight: 600; font-size: 13px; color: var(--ink-2); white-space: nowrap; }
 tr:last-child td { border-bottom: 0; }
 td:first-child { font-weight: 600; }
-table.wide td:first-child { min-width: 8.5em; }
-table.wide td:nth-child(3) { min-width: 12em; }
-table.wide td:nth-child(4) { min-width: 8em; }
-@media (max-width: 640px) { table.wide { min-width: 640px; } }
+@media (min-width: 700px) {
+  table.wide td:first-child { min-width: 8em; }
+}
+@media (max-width: 699px) {
+  .table-scroll { border: 0; border-radius: 0; overflow: visible; }
+  table, tbody, tr, td { display: block; width: 100%; }
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  tr { border: 1px solid var(--line); border-radius: 14px; padding: 4px 0; margin-bottom: 10px; }
+  td { border: 0; padding: 6px 16px; }
+  td:first-child { padding-top: 12px; font-size: 15.5px; }
+  td:not(:first-child)::before {
+    content: attr(data-label); display: block; font-size: 12px; font-weight: 500; color: var(--ink-3); line-height: 1.5;
+  }
+  td:last-child { padding-bottom: 12px; }
+}
 
 .delete-box {
-  background: #fff; border: 2px solid var(--whale); border-radius: 16px;
-  padding: 20px 20px 8px; margin-top: 8px;
+  border: 1px solid var(--line); border-radius: 16px; background: var(--bg-2);
+  padding: 20px 22px 8px; margin-top: 12px;
 }
-.delete-box h3 { font-family: var(--display); font-weight: 400; font-size: 20px; margin: 0 0 8px; }
-.path {
-  display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px;
-  font-weight: 600;
-}
-.path span { background: #eaf2fe; border-radius: 6px; padding: 1px 8px; }
-.path svg { width: 14px; height: 14px; color: var(--ink-soft); }
-.mail-template { background: var(--paper); border-left: 4px solid var(--gold); padding: 10px 14px; margin: 8px 0 14px; font-size: 15px; }
-
-footer.doc-foot { border-top: 1px solid #d9e3f3; padding: 24px 0 40px; font-size: 14px; color: var(--ink-soft); }
-footer.doc-foot .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
-footer.doc-foot a { color: var(--ink-soft); }
+#delete-account .delete-box:first-of-type { border-color: #c9d8fb; background: var(--accent-soft); }
+.delete-box h3 { font-size: 17px; font-weight: 700; margin: 0 0 8px; }
+.path { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px; font-weight: 600; }
+.path span { background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 0 8px; font-size: .94em; }
+.path svg { width: 14px; height: 14px; color: var(--ink-3); }
+.mail-template { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; margin: 8px 0 14px; font-size: 15px; }
 </style>
 </head>
 <body>
 
-<header class="doc-top">
+<header class="site-head">
   <div class="wrap">
-    <div class="bar">
-      <a class="wordmark" href="./"><img src="images/whale-happy.webp" alt="" width="36" height="36">iamaforeigner</a>
-      <a class="back" href="./">홈으로</a>
-    </div>
-    <h1>개인정보 처리방침</h1>
-    <p><strong>IAMAFOREIGNER</strong>(이하 "앱")을 운영하는 <strong>WHALE LAB</strong>(이하 "운영자")은 「개인정보 보호법」에 따라 이용자의 개인정보를 다음과 같이 처리합니다.</p>
-    <p style="margin-top:10px">시행일: 2026년 10월 1일</p>
+    <a class="wordmark" href="./"><img src="images/icon.png" alt="" width="28" height="28">iamaforeigner</a>
+    <nav><a class="back" href="./">홈으로</a></nav>
   </div>
 </header>
+
+<div class="doc-top">
+  <div class="wrap">
+    <h1>개인정보 처리방침</h1>
+    <p><strong>IAMAFOREIGNER</strong>(이하 "앱")을 운영하는 <strong>WHALE LAB</strong>(이하 "운영자")은 「개인정보 보호법」에 따라 이용자의 개인정보를 다음과 같이 처리합니다.</p>
+    <p>시행일: 2026년 10월 1일</p>
+  </div>
+</div>
 
 <div class="wrap doc">
   <nav class="toc" aria-label="목차">
@@ -136,15 +140,15 @@ footer.doc-foot a { color: var(--ink-soft); }
       <div class="table-scroll"><table class="wide">
         <thead><tr><th>구분</th><th>항목</th><th>목적</th></tr></thead>
         <tbody>
-          <tr><td>회원 계정</td><td>이메일, 비밀번호(암호화 저장), 가입일</td><td>회원 식별, 로그인</td></tr>
-          <tr><td>둘러보기(게스트)</td><td>기기 식별자, 플랫폼(Android 등), 최초 접속 IP, 최초/최근 접속 시각</td><td>가입 없는 체험 제공, 무료 체험 중복 이용 방지</td></tr>
-          <tr><td>프로필</td><td>이름(닉네임), 모국어, 학습 언어, 학습 목표, 앱 설정</td><td>맞춤 학습 제공</td></tr>
-          <tr><td>학습 기록</td><td>저장한 단어와 문장, 진행도와 경험치, 퀴즈 결과, 미션과 보스전 기록</td><td>학습 진행 저장, 복습(간격 반복)</td></tr>
-          <tr><td>이용자가 작성하거나 말한 내용</td><td>음성 일기 원문과 교정문, AI 튜터와 프리톡 대화 내용, 말한 문장</td><td>교정과 대화 기능 제공, 기록 열람</td></tr>
-          <tr><td>음성</td><td>녹음한 음성</td><td>음성을 글자로 변환(<strong>저장하지 않음</strong>, 2절 참고)</td></tr>
-          <tr><td>알림</td><td>푸시 알림 토큰(FCM), 플랫폼</td><td>알림 발송</td></tr>
-          <tr><td>결제</td><td>구독 상품, 구매 토큰, 구독 상태와 만료일, Google Play 검증 응답</td><td>구독 확인, 권한 부여</td></tr>
-          <tr><td>서비스 이용 기록</td><td>로그인과 토큰 갱신 이력, AI 기능 사용량(호출 수, 사용 시간, 비용), 오류 기록(요청 경로, 앱 버전)</td><td>보안, 남용 방지, 비용 관리, 장애 대응</td></tr>
+          <tr><td data-label="구분">회원 계정</td><td data-label="항목">이메일, 비밀번호(암호화 저장), 가입일</td><td data-label="목적">회원 식별, 로그인</td></tr>
+          <tr><td data-label="구분">둘러보기(게스트)</td><td data-label="항목">기기 식별자, 플랫폼(Android 등), 최초 접속 IP, 최초/최근 접속 시각</td><td data-label="목적">가입 없는 체험 제공, 무료 체험 중복 이용 방지</td></tr>
+          <tr><td data-label="구분">프로필</td><td data-label="항목">이름(닉네임), 모국어, 학습 언어, 학습 목표, 앱 설정</td><td data-label="목적">맞춤 학습 제공</td></tr>
+          <tr><td data-label="구분">학습 기록</td><td data-label="항목">저장한 단어와 문장, 진행도와 경험치, 퀴즈 결과, 미션과 보스전 기록</td><td data-label="목적">학습 진행 저장, 복습(간격 반복)</td></tr>
+          <tr><td data-label="구분">이용자가 작성하거나 말한 내용</td><td data-label="항목">음성 일기 원문과 교정문, AI 튜터와 프리톡 대화 내용, 말한 문장</td><td data-label="목적">교정과 대화 기능 제공, 기록 열람</td></tr>
+          <tr><td data-label="구분">음성</td><td data-label="항목">녹음한 음성</td><td data-label="목적">음성을 글자로 변환(<strong>저장하지 않음</strong>, 2절 참고)</td></tr>
+          <tr><td data-label="구분">알림</td><td data-label="항목">푸시 알림 토큰(FCM), 플랫폼</td><td data-label="목적">알림 발송</td></tr>
+          <tr><td data-label="구분">결제</td><td data-label="항목">구독 상품, 구매 토큰, 구독 상태와 만료일, Google Play 검증 응답</td><td data-label="목적">구독 확인, 권한 부여</td></tr>
+          <tr><td data-label="구분">서비스 이용 기록</td><td data-label="항목">로그인과 토큰 갱신 이력, AI 기능 사용량(호출 수, 사용 시간, 비용), 오류 기록(요청 경로, 앱 버전)</td><td data-label="목적">보안, 남용 방지, 비용 관리, 장애 대응</td></tr>
         </tbody>
       </table></div>
       <ul>
@@ -167,13 +171,13 @@ footer.doc-foot a { color: var(--ink-soft); }
       <div class="table-scroll"><table>
         <thead><tr><th>항목</th><th>보유 기간</th></tr></thead>
         <tbody>
-          <tr><td>계정, 프로필, 학습 기록, 작성 내용</td><td><strong>회원 탈퇴 시까지</strong> (탈퇴 시 지체 없이 파기)</td></tr>
-          <tr><td>로그인 유지 토큰</td><td>최대 90일 (만료 후 자동 삭제)</td></tr>
-          <tr><td>오류 기록</td><td>90일 (이후 자동 삭제)</td></tr>
-          <tr><td>게스트 계정과 그 데이터</td><td>마지막 이용 후 90일</td></tr>
-          <tr><td>게스트 기기 식별자, 최초 접속 IP</td><td>1년 (무료 체험 중복 이용 방지)</td></tr>
-          <tr><td>이용 기록(로그인 이력, AI 사용량)</td><td>탈퇴 시 계정과의 연결을 끊어 <strong>특정 개인을 알아볼 수 없는 형태로</strong> 보관(통계, 비용 관리)</td></tr>
-          <tr><td>구독 상태 정보</td><td><strong>회원 탈퇴 시까지</strong>. 결제 자체는 Google Play 가 처리하며, 거래 기록은 Google 이 관계 법령에 따라 보관합니다.</td></tr>
+          <tr><td data-label="항목">계정, 프로필, 학습 기록, 작성 내용</td><td data-label="보유 기간"><strong>회원 탈퇴 시까지</strong> (탈퇴 시 지체 없이 파기)</td></tr>
+          <tr><td data-label="항목">로그인 유지 토큰</td><td data-label="보유 기간">최대 90일 (만료 후 자동 삭제)</td></tr>
+          <tr><td data-label="항목">오류 기록</td><td data-label="보유 기간">90일 (이후 자동 삭제)</td></tr>
+          <tr><td data-label="항목">게스트 계정과 그 데이터</td><td data-label="보유 기간">마지막 이용 후 90일</td></tr>
+          <tr><td data-label="항목">게스트 기기 식별자, 최초 접속 IP</td><td data-label="보유 기간">1년 (무료 체험 중복 이용 방지)</td></tr>
+          <tr><td data-label="항목">이용 기록(로그인 이력, AI 사용량)</td><td data-label="보유 기간">탈퇴 시 계정과의 연결을 끊어 <strong>특정 개인을 알아볼 수 없는 형태로</strong> 보관(통계, 비용 관리)</td></tr>
+          <tr><td data-label="항목">구독 상태 정보</td><td data-label="보유 기간"><strong>회원 탈퇴 시까지</strong>. 결제 자체는 Google Play 가 처리하며, 거래 기록은 Google 이 관계 법령에 따라 보관합니다.</td></tr>
         </tbody>
       </table></div>
       <ul>
@@ -187,10 +191,10 @@ footer.doc-foot a { color: var(--ink-soft); }
       <div class="table-scroll"><table class="wide">
         <thead><tr><th>받는 자</th><th>국가</th><th>전송 항목</th><th>목적</th><th>보유 기간</th></tr></thead>
         <tbody>
-          <tr><td>OpenAI, L.L.C.</td><td>미국</td><td>대화와 일기 등 입력 텍스트, 녹음 음성, 읽어 줄 텍스트 (<strong>이메일과 계정 ID는 보내지 않음</strong>)</td><td>AI 대화와 교정, 음성을 글자로 변환, 음성 합성</td><td>최대 30일 (OpenAI API 정책: 남용 감시 목적 보관 후 삭제)</td></tr>
-          <tr><td>Google LLC<br>(Firebase Cloud Messaging)</td><td>미국</td><td>푸시 토큰, 알림 문구</td><td>푸시 알림</td><td>Google 개인정보처리방침에 따름</td></tr>
-          <tr><td>Google LLC<br>(Google Play)</td><td>미국</td><td>구매 토큰</td><td>구독 결제 검증</td><td>Google 개인정보처리방침에 따름</td></tr>
-          <tr><td>Railway Corporation</td><td><span class="ph">[미국 / 리전 확인]</span></td><td>서버와 DB에 저장되는 모든 정보</td><td>서버 호스팅, 데이터 저장</td><td>위탁 계약 종료 시</td></tr>
+          <tr><td data-label="받는 자">OpenAI, L.L.C.</td><td data-label="국가">미국</td><td data-label="전송 항목">대화와 일기 등 입력 텍스트, 녹음 음성, 읽어 줄 텍스트 (<strong>이메일과 계정 ID는 보내지 않음</strong>)</td><td data-label="목적">AI 대화와 교정, 음성을 글자로 변환, 음성 합성</td><td data-label="보유 기간">최대 30일 (OpenAI API 정책: 남용 감시 목적 보관 후 삭제)</td></tr>
+          <tr><td data-label="받는 자">Google LLC<br>(Firebase Cloud Messaging)</td><td data-label="국가">미국</td><td data-label="전송 항목">푸시 토큰, 알림 문구</td><td data-label="목적">푸시 알림</td><td data-label="보유 기간">Google 개인정보처리방침에 따름</td></tr>
+          <tr><td data-label="받는 자">Google LLC<br>(Google Play)</td><td data-label="국가">미국</td><td data-label="전송 항목">구매 토큰</td><td data-label="목적">구독 결제 검증</td><td data-label="보유 기간">Google 개인정보처리방침에 따름</td></tr>
+          <tr><td data-label="받는 자">Railway Corporation</td><td data-label="국가"><span class="ph">[미국 / 리전 확인]</span></td><td data-label="전송 항목">서버와 DB에 저장되는 모든 정보</td><td data-label="목적">서버 호스팅, 데이터 저장</td><td data-label="보유 기간">위탁 계약 종료 시</td></tr>
         </tbody>
       </table></div>
       <ul>
@@ -217,10 +221,10 @@ footer.doc-foot a { color: var(--ink-soft); }
       <div class="table-scroll"><table>
         <thead><tr><th>권한</th><th>목적</th><th>필수 여부</th></tr></thead>
         <tbody>
-          <tr><td>마이크</td><td>말하기 연습, 음성 일기, 프리톡</td><td>선택 (거부 시 음성 기능만 제한)</td></tr>
-          <tr><td>알림</td><td>학습 알림</td><td>선택</td></tr>
-          <tr><td>인터넷</td><td>서버 통신</td><td>필수</td></tr>
-          <tr><td>결제(Google Play)</td><td>구독 구매</td><td>구독 시에만</td></tr>
+          <tr><td data-label="권한">마이크</td><td data-label="목적">말하기 연습, 음성 일기, 프리톡</td><td data-label="필수 여부">선택 (거부 시 음성 기능만 제한)</td></tr>
+          <tr><td data-label="권한">알림</td><td data-label="목적">학습 알림</td><td data-label="필수 여부">선택</td></tr>
+          <tr><td data-label="권한">인터넷</td><td data-label="목적">서버 통신</td><td data-label="필수 여부">필수</td></tr>
+          <tr><td data-label="권한">결제(Google Play)</td><td data-label="목적">구독 구매</td><td data-label="필수 여부">구독 시에만</td></tr>
         </tbody>
       </table></div>
     </section>
@@ -313,12 +317,33 @@ footer.doc-foot a { color: var(--ink-soft); }
   </article>
 </div>
 
-<footer class="doc-foot">
+<footer class="site-foot">
   <div class="wrap">
     <span>&copy; 2026 WHALE LAB</span>
     <a href="./">iamaforeigner 홈</a>
   </div>
 </footer>
 
+<script>
+(function () {
+  var head = document.querySelector('.site-head');
+  var onScroll = function () { head.classList.toggle('scrolled', window.scrollY > 8); };
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  var d = document.querySelector('.toc details');
+  if (d && window.matchMedia('(max-width: 999px)').matches) d.open = false;
+
+  var links = {};
+  document.querySelectorAll('.toc a').forEach(function (a) { links[a.getAttribute('href').slice(1)] = a; });
+  if (!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      Object.keys(links).forEach(function (k) { links[k].classList.toggle('cur', k === e.target.id); });
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  document.querySelectorAll('.body section[id]').forEach(function (s) { io.observe(s); });
+})();
+</script>
 </body>
 </html>
