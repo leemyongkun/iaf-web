@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>개인정보 처리방침 — iamaforeigner</title>
+<meta name="description" content="iamaforeigner 개인정보 처리방침과 계정 삭제 요청 방법">
+<meta name="theme-color" content="#172048">
+<link rel="icon" href="images/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=IBM+Plex+Sans+KR:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+body { background: var(--paper); font-size: 16px; line-height: 1.8; }
+
+.doc-top {
+  background:
+    radial-gradient(60% 80% at 80% 0%, rgba(111,231,196,.22) 0, rgba(111,231,196,0) 70%),
+    linear-gradient(var(--night), #26306a);
+  color: var(--snow-text);
+  padding: 20px 0 56px;
+}
+.doc-top .bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 44px; }
+.doc-top .wordmark { color: #fff; font-size: 20px; }
+.doc-top .bar a.back { color: #cdd6f5; font-size: 15px; text-decoration: none; }
+.doc-top .bar a.back:hover { text-decoration: underline; }
+.doc-top h1 { font-family: var(--display); font-weight: 400; font-size: clamp(36px, 8vw, 56px); line-height: 1.1; margin: 0 0 14px; }
+.doc-top p { margin: 0; max-width: 40em; opacity: .9; }
+.doc-top .ph { color: #5a4300; }
+
+.doc { display: grid; gap: 32px; padding-top: 40px; padding-bottom: 96px; }
+@media (min-width: 1000px) {
+  .doc { grid-template-columns: 250px minmax(0, 1fr); gap: 64px; }
+}
+
+/* table of contents */
+.toc { font-size: 15px; }
+.toc details { background: #fff; border: 1px solid #d9e3f3; border-radius: 12px; padding: 12px 16px; }
+.toc summary { font-family: var(--display); font-size: 18px; cursor: pointer; }
+.toc ol { margin: 10px 0 0; padding-left: 1.5em; }
+.toc li { margin: 4px 0; }
+.toc a { color: var(--ink); text-decoration: none; }
+.toc a:hover { color: var(--whale-deep); text-decoration: underline; }
+.toc li.hl a { font-weight: 600; color: var(--whale-deep); }
+@media (min-width: 1000px) {
+  .toc { position: sticky; top: 24px; align-self: start; }
+  .toc details { background: none; border: 0; padding: 0; }
+  .toc summary { list-style: none; pointer-events: none; margin-bottom: 6px; }
+  .toc summary::-webkit-details-marker { display: none; }
+}
+
+.body { max-width: 46em; min-width: 0; }
+.body section { scroll-margin-top: 20px; padding-bottom: 12px; }
+.body h2 {
+  font-family: var(--display); font-weight: 400;
+  font-size: 26px; line-height: 1.3;
+  margin: 40px 0 14px;
+  display: flex; gap: 12px; align-items: baseline;
+}
+.body h2 .n { color: var(--whale); min-width: 1.4em; }
+.body section:first-child h2 { margin-top: 0; }
+.body p { margin: 0 0 12px; }
+.body ul { margin: 0 0 14px; padding-left: 1.3em; }
+.body li { margin-bottom: 6px; }
+.body strong { font-weight: 600; }
+
+.table-scroll { overflow-x: auto; margin: 6px 0 18px; border: 1px solid #d9e3f3; border-radius: 12px; background: #fff; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; line-height: 1.6; }
+th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid #e6ecf7; }
+th { background: #eaf2fe; font-weight: 600; white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font-weight: 600; }
+table.wide td:first-child { min-width: 8.5em; }
+table.wide td:nth-child(3) { min-width: 12em; }
+table.wide td:nth-child(4) { min-width: 8em; }
+@media (max-width: 640px) { table.wide { min-width: 640px; } }
+
+.delete-box {
+  background: #fff; border: 2px solid var(--whale); border-radius: 16px;
+  padding: 20px 20px 8px; margin-top: 8px;
+}
+.delete-box h3 { font-family: var(--display); font-weight: 400; font-size: 20px; margin: 0 0 8px; }
+.path {
+  display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px;
+  font-weight: 600;
+}
+.path span { background: #eaf2fe; border-radius: 6px; padding: 1px 8px; }
+.path svg { width: 14px; height: 14px; color: var(--ink-soft); }
+.mail-template { background: var(--paper); border-left: 4px solid var(--gold); padding: 10px 14px; margin: 8px 0 14px; font-size: 15px; }
+
+footer.doc-foot { border-top: 1px solid #d9e3f3; padding: 24px 0 40px; font-size: 14px; color: var(--ink-soft); }
+footer.doc-foot .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+footer.doc-foot a { color: var(--ink-soft); }
+</style>
+</head>
+<body>
+
+<header class="doc-top">
+  <div class="wrap">
+    <div class="bar">
+      <a class="wordmark" href="./"><img src="images/whale-happy.webp" alt="" width="36" height="36">iamaforeigner</a>
+      <a class="back" href="./">홈으로</a>
+    </div>
+    <h1>개인정보 처리방침</h1>
+    <p><strong><span class="ph">[앱 이름]</span></strong>(이하 "앱")을 운영하는 <strong><span class="ph">[운영자 이름]</span></strong>(이하 "운영자")은 「개인정보 보호법」에 따라 이용자의 개인정보를 다음과 같이 처리합니다.</p>
+    <p style="margin-top:10px">시행일: <span class="ph">[YYYY-MM-DD]</span></p>
+  </div>
+</header>
+
+<div class="wrap doc">
+  <nav class="toc" aria-label="목차">
+    <details open>
+      <summary>목차</summary>
+      <ol>
+        <li><a href="#items">처리하는 개인정보 항목과 목적</a></li>
+        <li><a href="#voice">음성 데이터 처리</a></li>
+        <li><a href="#retention">보유 및 이용 기간</a></li>
+        <li><a href="#transfer">처리 위탁 및 국외 이전</a></li>
+        <li><a href="#device">기기에 저장되는 정보</a></li>
+        <li><a href="#permissions">앱 권한</a></li>
+        <li><a href="#destruction">개인정보의 파기</a></li>
+        <li><a href="#rights">이용자의 권리와 행사 방법</a></li>
+        <li><a href="#security">안전성 확보 조치</a></li>
+        <li><a href="#officer">개인정보 보호책임자</a></li>
+        <li><a href="#changes">방침 변경</a></li>
+        <li class="hl"><a href="#delete-account">계정 삭제 요청</a></li>
+      </ol>
+    </details>
+  </nav>
+
+  <article class="body">
+
+    <section id="items">
+      <h2><span class="n">1.</span>처리하는 개인정보 항목과 목적</h2>
+      <div class="table-scroll"><table class="wide">
+        <thead><tr><th>구분</th><th>항목</th><th>목적</th></tr></thead>
+        <tbody>
+          <tr><td>회원 계정</td><td>이메일, 비밀번호(암호화 저장), 가입일</td><td>회원 식별, 로그인</td></tr>
+          <tr><td>둘러보기(게스트)</td><td>기기 식별자, 플랫폼(Android 등), 최초 접속 IP, 최초/최근 접속 시각</td><td>가입 없는 체험 제공, 무료 체험 중복 이용 방지</td></tr>
+          <tr><td>프로필</td><td>이름(닉네임), 모국어, 학습 언어, 학습 목표, 앱 설정</td><td>맞춤 학습 제공</td></tr>
+          <tr><td>학습 기록</td><td>저장한 단어와 문장, 진행도와 경험치, 퀴즈 결과, 미션과 보스전 기록</td><td>학습 진행 저장, 복습(간격 반복)</td></tr>
+          <tr><td>이용자가 작성하거나 말한 내용</td><td>음성 일기 원문과 교정문, AI 튜터와 프리톡 대화 내용, 말한 문장</td><td>교정과 대화 기능 제공, 기록 열람</td></tr>
+          <tr><td>음성</td><td>녹음한 음성</td><td>음성을 글자로 변환(<strong>저장하지 않음</strong>, 2절 참고)</td></tr>
+          <tr><td>알림</td><td>푸시 알림 토큰(FCM), 플랫폼</td><td>알림 발송</td></tr>
+          <tr><td>결제</td><td>구독 상품, 구매 토큰, 구독 상태와 만료일, Google Play 검증 응답</td><td>구독 확인, 권한 부여</td></tr>
+          <tr><td>서비스 이용 기록</td><td>로그인과 토큰 갱신 이력, AI 기능 사용량(호출 수, 사용 시간, 비용), 오류 기록(요청 경로, 앱 버전)</td><td>보안, 남용 방지, 비용 관리, 장애 대응</td></tr>
+        </tbody>
+      </table></div>
+      <ul>
+        <li>앱은 <strong>나이와 생년월일을 수집하지 않습니다.</strong></li>
+        <li>앱은 <strong>광고, 분석, 크래시 수집 도구를 사용하지 않습니다.</strong></li>
+      </ul>
+    </section>
+
+    <section id="voice">
+      <h2><span class="n">2.</span>음성 데이터 처리</h2>
+      <ul>
+        <li>녹음한 음성은 <strong>글자 변환을 위해서만</strong> 서버를 거쳐 OpenAI로 전송되고, 서버 메모리에서만 처리됩니다.</li>
+        <li>음성 원본은 서버, 저장소, 기기 <strong>어디에도 저장하지 않습니다.</strong></li>
+        <li>변환된 글자와 녹음 길이(사용량 계산용)만 남습니다.</li>
+      </ul>
+    </section>
+
+    <section id="retention">
+      <h2><span class="n">3.</span>보유 및 이용 기간</h2>
+      <div class="table-scroll"><table>
+        <thead><tr><th>항목</th><th>보유 기간</th></tr></thead>
+        <tbody>
+          <tr><td>계정, 프로필, 학습 기록, 작성 내용</td><td><strong>회원 탈퇴 시까지</strong> (탈퇴 시 지체 없이 파기)</td></tr>
+          <tr><td>로그인 유지 토큰</td><td>최대 90일 (만료 후 자동 삭제)</td></tr>
+          <tr><td>오류 기록</td><td>90일 (이후 자동 삭제)</td></tr>
+          <tr><td>게스트 계정과 그 데이터</td><td>마지막 이용 후 <span class="ph">[90일]</span></td></tr>
+          <tr><td>게스트 기기 식별자, 최초 접속 IP</td><td><span class="ph">[기간 — 무료 체험 중복 방지 목적]</span></td></tr>
+          <tr><td>이용 기록(로그인 이력, AI 사용량)</td><td>탈퇴 시 계정과의 연결을 끊어 <strong>특정 개인을 알아볼 수 없는 형태로</strong> 보관(통계, 비용 관리)</td></tr>
+          <tr><td>결제 기록</td><td>관계 법령(전자상거래법 등)에 따른 기간 <span class="ph">[5년]</span></td></tr>
+        </tbody>
+      </table></div>
+      <ul>
+        <li>일기, 프리톡 대화, 튜터 대화는 앱에서 건별로 직접 삭제할 수 있습니다.</li>
+      </ul>
+    </section>
+
+    <section id="transfer">
+      <h2><span class="n">4.</span>개인정보 처리 위탁 및 국외 이전</h2>
+      <p>원활한 서비스 제공을 위해 아래 업체에 처리를 맡깁니다. 이들 업체는 국외에 있으며, 서비스 이용 시 네트워크를 통해 전송됩니다.</p>
+      <div class="table-scroll"><table class="wide">
+        <thead><tr><th>받는 자</th><th>국가</th><th>전송 항목</th><th>목적</th><th>보유 기간</th></tr></thead>
+        <tbody>
+          <tr><td>OpenAI, L.L.C.</td><td>미국</td><td>대화와 일기 등 입력 텍스트, 녹음 음성, 읽어 줄 텍스트 (<strong>이메일과 계정 ID는 보내지 않음</strong>)</td><td>AI 대화와 교정, 음성을 글자로 변환, 음성 합성</td><td><span class="ph">[OpenAI API 정책에 따름]</span></td></tr>
+          <tr><td>Google LLC<br>(Firebase Cloud Messaging)</td><td>미국</td><td>푸시 토큰, 알림 문구</td><td>푸시 알림</td><td><span class="ph">[ ]</span></td></tr>
+          <tr><td>Google LLC<br>(Google Play)</td><td>미국</td><td>구매 토큰</td><td>구독 결제 검증</td><td><span class="ph">[ ]</span></td></tr>
+          <tr><td>Railway Corporation</td><td><span class="ph">[미국 / 리전 확인]</span></td><td>서버와 DB에 저장되는 모든 정보</td><td>서버 호스팅, 데이터 저장</td><td>위탁 계약 종료 시</td></tr>
+        </tbody>
+      </table></div>
+      <ul>
+        <li>전송 시기와 방법: 해당 기능 이용 시 암호화된 통신(HTTPS)으로 전송.</li>
+        <li>국외 이전을 거부하려면 해당 기능 이용을 중단하거나 탈퇴할 수 있습니다. 다만 AI 기능은 이전 없이는 제공할 수 없습니다.</li>
+      </ul>
+      <p>운영자는 법령에 근거가 있는 경우 외에는 개인정보를 <strong>제3자에게 제공하지 않습니다.</strong></p>
+    </section>
+
+    <section id="device">
+      <h2><span class="n">5.</span>기기에 저장되는 정보</h2>
+      <p>앱은 오프라인 이용과 빠른 실행을 위해 이용자의 기기에 다음을 저장합니다.</p>
+      <ul>
+        <li>로그인 토큰, 마지막 로그인 이메일(비밀번호는 저장하지 않음)</li>
+        <li>프로필, 설정, 학습 기록, 대화 기록 사본</li>
+        <li>서버로 보내기 전 대기 중인 기록</li>
+        <li>발음 음성 캐시, 보스전 영상 캐시</li>
+      </ul>
+      <p>앱을 삭제하거나 로그아웃, 계정 전환 시 삭제됩니다. Android 백업 기능이 켜져 있으면 기기 백업에 포함될 수 있습니다.</p>
+    </section>
+
+    <section id="permissions">
+      <h2><span class="n">6.</span>앱 권한</h2>
+      <div class="table-scroll"><table>
+        <thead><tr><th>권한</th><th>목적</th><th>필수 여부</th></tr></thead>
+        <tbody>
+          <tr><td>마이크</td><td>말하기 연습, 음성 일기, 프리톡</td><td>선택 (거부 시 음성 기능만 제한)</td></tr>
+          <tr><td>알림</td><td>학습 알림</td><td>선택</td></tr>
+          <tr><td>인터넷</td><td>서버 통신</td><td>필수</td></tr>
+          <tr><td>결제(Google Play)</td><td>구독 구매</td><td>구독 시에만</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="destruction">
+      <h2><span class="n">7.</span>개인정보의 파기</h2>
+      <ul>
+        <li>보유 기간이 끝났거나 목적을 달성한 개인정보는 지체 없이 파기합니다.</li>
+        <li>전자적 파일은 복구할 수 없는 방법으로 삭제합니다.</li>
+        <li>법령에 따라 보존해야 하는 정보는 별도로 분리해 보관합니다.</li>
+      </ul>
+    </section>
+
+    <section id="rights">
+      <h2><span class="n">8.</span>이용자의 권리와 행사 방법</h2>
+      <p>이용자는 언제든지 다음을 요구할 수 있습니다.</p>
+      <ul>
+        <li>개인정보 열람, 정정, 삭제, 처리 정지</li>
+        <li><strong>회원 탈퇴</strong>: 앱 <span class="path"><span>설정</span><span>계정</span><span>회원 탈퇴</span></span>에서 직접 할 수 있습니다. 앱이 없다면 <a href="#delete-account">12절 계정 삭제 요청</a>을 참고하세요.</li>
+        <li>그 밖의 요청: <a href="#officer">10절</a> 연락처로 보내 주시면 지체 없이 처리합니다.</li>
+      </ul>
+    </section>
+
+    <section id="security">
+      <h2><span class="n">9.</span>안전성 확보 조치</h2>
+      <ul>
+        <li>비밀번호는 복호화할 수 없는 방식(bcrypt)으로 암호화해 저장합니다.</li>
+        <li>모든 통신은 HTTPS로 암호화합니다.</li>
+        <li>로그인 토큰은 짧은 만료 시간을 두고, 갱신 토큰은 해시로만 저장합니다.</li>
+        <li>서버 로그에는 이용자가 작성한 글, 비밀번호, 음성을 남기지 않습니다.</li>
+        <li>데이터 접근 권한을 운영자로 제한합니다.</li>
+      </ul>
+    </section>
+
+    <section id="officer">
+      <h2><span class="n">10.</span>개인정보 보호책임자</h2>
+      <ul>
+        <li>이름: <span class="ph">[보호책임자 이름]</span></li>
+        <li>이메일: <span class="ph">[보호책임자 이메일]</span></li>
+      </ul>
+      <p>개인정보 침해 신고와 상담은 아래 기관에도 할 수 있습니다.</p>
+      <ul>
+        <li>개인정보침해신고센터: <a href="https://privacy.kisa.or.kr" rel="noopener">privacy.kisa.or.kr</a> / 국번없이 118</li>
+        <li>개인정보분쟁조정위원회: <a href="https://www.kopico.go.kr" rel="noopener">www.kopico.go.kr</a> / 1833-6972</li>
+      </ul>
+    </section>
+
+    <section id="changes">
+      <h2><span class="n">11.</span>방침 변경</h2>
+      <p>이 방침이 변경되면 시행 7일 전(중요한 변경은 30일 전)부터 앱 공지로 알립니다.</p>
+    </section>
+
+    <section id="delete-account">
+      <h2><span class="n">12.</span>계정 삭제 요청</h2>
+      <p>계정과 그에 딸린 데이터는 아래 두 방법 중 하나로 삭제할 수 있습니다.</p>
+
+      <div class="delete-box">
+        <h3>앱에서 직접 삭제</h3>
+        <p><span class="path"><span>설정</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg><span>계정</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg><span>회원 탈퇴</span></span></p>
+        <p>탈퇴하면 즉시 처리되며 되돌릴 수 없습니다.</p>
+      </div>
+
+      <div class="delete-box" style="margin-top:16px">
+        <h3>앱이 없을 때: 이메일로 요청</h3>
+        <p>앱을 이미 지웠거나 기기를 바꿨다면, <strong>가입할 때 쓴 이메일 주소로</strong> 아래 주소에 메일을 보내 주세요. 본인 확인을 위해 가입 이메일에서 보낸 요청만 처리합니다.</p>
+        <p>받는 주소: <span class="ph">[계정 삭제 요청 이메일]</span></p>
+        <div class="mail-template">
+          제목: 계정 삭제 요청<br>
+          내용: 가입한 이메일 주소, (선택) 닉네임
+        </div>
+        <p>요청을 받은 날부터 <span class="ph">[7일]</span> 안에 삭제하고 결과를 회신합니다.</p>
+      </div>
+
+      <p style="margin-top:20px"><strong>삭제되는 정보</strong></p>
+      <ul>
+        <li>계정(이메일, 비밀번호), 프로필과 설정</li>
+        <li>학습 기록(단어, 문장, 진행도와 경험치, 미션과 보스전 기록)</li>
+        <li>음성 일기, AI 튜터와 프리톡 대화 내용</li>
+        <li>푸시 알림 토큰</li>
+      </ul>
+      <p><strong>삭제 후에도 남는 정보</strong></p>
+      <ul>
+        <li>이용 기록(로그인 이력, AI 사용량): 계정과의 연결을 끊어 특정 개인을 알아볼 수 없는 형태로 보관</li>
+        <li>오류 기록: 생성 후 90일이 지나면 자동 삭제</li>
+        <li>결제 기록: 관계 법령에 따른 기간(<span class="ph">[5년]</span>) 동안 분리 보관 후 파기</li>
+      </ul>
+      <p>계정을 삭제해도 <strong>Google Play 구독은 자동으로 해지되지 않습니다.</strong> 구독 중이라면 Google Play 스토어의 구독 메뉴에서 먼저 해지해 주세요.</p>
+    </section>
+
+  </article>
+</div>
+
+<footer class="doc-foot">
+  <div class="wrap">
+    <span>&copy; 2026 <span class="ph">[운영자 이름]</span></span>
+    <a href="./">iamaforeigner 홈</a>
+  </div>
+</footer>
+
+</body>
+</html>
