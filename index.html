@@ -1,308 +1,225 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>iamaforeigner — 한마디씩 말하면 산을 오릅니다</title>
-<meta name="description" content="고래 기사와 함께 영어와 일본어 일상 회화를 익히는 앱. tier 1 산기슭에서 tier 60 정상까지, 매일 한마디씩.">
-<meta property="og:title" content="iamaforeigner">
-<meta property="og:description" content="한마디씩 말하면 산을 오릅니다. 영어와 일본어 일상 회화 앱.">
-<meta property="og:image" content="images/og.jpg">
-<meta property="og:type" content="website">
-<meta name="theme-color" content="#ffffff">
-<link rel="icon" href="images/icon.png">
-<link rel="apple-touch-icon" href="images/icon.png">
+<title>IAMAFOREIGNER</title>
+<meta name="description" content="고래 기사가 되어 실력의 산을 오르는 영어·일본어 일상회화 앱. WHALE LAB.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<style>
-section { padding: 96px 0; }
-@media (min-width: 960px) { section { padding: 136px 0; } }
-
-h1, h2 { font-weight: 700; letter-spacing: -0.035em; margin: 0; color: var(--ink); }
-h2 { font-size: clamp(30px, 4.6vw, 48px); line-height: 1.2; }
-.sub { color: var(--ink-2); font-size: 17px; margin: 16px 0 0; max-width: 32em; }
-
-/* ---------- hero ---------- */
-.hero { padding: 48px 0 88px; }
-.hero .wrap { display: grid; gap: 56px; align-items: center; }
-@media (min-width: 960px) {
-  .hero { padding: 72px 0 120px; }
-  .hero .wrap { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; }
-}
-.hero h1 { font-size: clamp(42px, 7.4vw, 76px); line-height: 1.1; }
-.hero h1 span { display: block; }
-.hero .lede { font-size: 18px; color: var(--ink-2); margin: 24px 0 36px; max-width: 26em; }
-.hero .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
-.textlink {
-  font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none;
-  display: inline-flex; align-items: center; gap: 6px; padding: 12px 4px;
-}
-.textlink svg { width: 16px; height: 16px; transition: transform .2s; }
-.textlink:hover svg { transform: translateY(2px); }
-
-.visual { position: relative; width: 100%; max-width: 480px; margin: 0 auto 32px; }
-.visual .art {
-  aspect-ratio: 4 / 5; border-radius: 28px; overflow: hidden; background: #bfe0fb;
-}
-.visual .art img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; }
-.visual .phone {
-  position: absolute; width: 42%; right: -4px; bottom: -32px; padding: 5px; border-radius: 30px;
-}
-.visual .phone img { border-radius: 25px; }
-@media (min-width: 960px) {
-  .visual { margin: 0 0 0 auto; }
-  .visual .phone { width: 210px; right: auto; left: -72px; bottom: -48px; padding: 7px; border-radius: 40px; }
-  .visual .phone img { border-radius: 33px; }
-}
-@media (prefers-reduced-motion: no-preference) {
-  .hero .copy > * { animation: up .7s cubic-bezier(.2,.7,.2,1) both; }
-  .hero .copy > :nth-child(2) { animation-delay: .08s; }
-  .hero .copy > :nth-child(3) { animation-delay: .16s; }
-  .visual .art { animation: fade 1s ease both .1s; }
-  .visual .phone { animation: up .9s cubic-bezier(.2,.7,.2,1) both .35s; }
-  @keyframes up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
-  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
-}
-
-/* ---------- tier scale ---------- */
-.climb { background: var(--bg-2); }
-.climb .head { display: grid; gap: 16px; }
-@media (min-width: 960px) { .climb .head { grid-template-columns: 1fr 1fr; align-items: end; gap: 64px; } .climb .sub { margin: 0; } }
-.scale { margin-top: 64px; }
-.track {
-  position: relative; height: 56px;
-  /* 60 tier ticks */
-  background:
-    repeating-linear-gradient(90deg, #c7d0de 0 1px, transparent 1px calc(100% / 59.0001)) left 32px / 100% 12px no-repeat;
-}
-.track::before {           /* baseline */
-  content: ""; position: absolute; left: 0; right: 0; top: 44px; height: 1px; background: #c7d0de;
-}
-.gate {
-  position: absolute; top: 20px; width: 2px; height: 24px; margin-left: -1px;
-  background: var(--ink);
-  left: calc((var(--t) - 1) / 59 * 100%);
-}
-.gate::after {             /* gate cap */
-  content: ""; position: absolute; left: 50%; top: -7px; width: 10px; height: 10px; margin-left: -5px;
-  border-radius: 50%; background: var(--bg-2); border: 2px solid var(--ink);
-}
-.gate.top { background: var(--accent); }
-.gate.top::after { border-color: var(--accent); background: var(--accent); }
-.me {
-  position: absolute; left: 0; bottom: 12px; width: 40px; height: auto; margin-left: -6px; z-index: 1;
-}
-.labels { position: relative; height: 22px; margin-top: 8px; font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
-.labels span { position: absolute; transform: translateX(-50%); left: calc((var(--t) - 1) / 59 * 100%); }
-.labels span:first-child { transform: none; }
-.labels span:last-child { transform: translateX(-100%); color: var(--accent-2); font-weight: 600; }
-@media (max-width: 639px) { .labels .odd { display: none; } .me { width: 30px; margin-left: -10px; } }
-.ends { display: flex; justify-content: space-between; margin-top: 20px; font-size: 15px; }
-.ends b { font-weight: 600; }
-.ends span { color: var(--ink-3); margin-left: 8px; }
-
-/* ---------- features ---------- */
-.features .sub { margin-bottom: 56px; }
-.show { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
-  margin: 0 calc(var(--gutter) * -1); padding: 8px var(--gutter) 24px; scrollbar-width: none; }
-.show::-webkit-scrollbar { display: none; }
-.feat { flex: 0 0 min(78%, 300px); scroll-snap-align: start; display: flex; flex-direction: column; gap: 24px; }
-.feat figure { margin: 0; order: -1; background: var(--bg-2); border-radius: 24px; padding: 32px 0 0; overflow: hidden; height: 380px; }
-.feat figure .phone { width: 220px; margin: 0 auto; }
-.feat button { all: unset; display: block; cursor: default; }
-.feat h3 { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 6px; }
-.feat p { margin: 0; font-size: 15px; color: var(--ink-2); line-height: 1.65; }
-
-@media (min-width: 960px) {
-  .features .sub { margin-bottom: 72px; }
-  .show {
-    display: grid; overflow: visible; margin: 0; padding: 0;
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-    grid-template-rows: repeat(5, auto) 1fr;
-    column-gap: 64px;
-  }
-  .feat { display: contents; }
-  .feat button {
-    grid-column: 1; cursor: pointer; border-radius: 16px;
-    padding: 22px 24px 22px 26px; position: relative;
-    transition: background .2s;
-  }
-  .feat button::before {
-    content: ""; position: absolute; left: 0; top: 24px; bottom: 24px; width: 2px; border-radius: 2px; background: transparent;
-  }
-  .feat button:hover { background: var(--bg-2); }
-  .feat h3 { color: var(--ink-3); transition: color .2s; margin: 0; }
-  .feat p { max-height: 0; opacity: 0; overflow: hidden; transition: max-height .35s ease, opacity .25s ease, margin .35s; }
-  .feat.on button::before { background: var(--accent); }
-  .feat.on h3 { color: var(--ink); }
-  .feat.on p { max-height: 8em; opacity: 1; margin-top: 8px; }
-  .feat figure {
-    grid-column: 2; grid-row: 1 / -1; height: 640px; padding: 56px 0 0; border-radius: 32px;
-    opacity: 0; visibility: hidden; transform: translateY(12px);
-    transition: opacity .35s ease, transform .45s cubic-bezier(.2,.7,.2,1), visibility 0s .35s;
-  }
-  .feat.on figure { opacity: 1; visibility: visible; transform: none; transition: opacity .35s ease, transform .45s cubic-bezier(.2,.7,.2,1), visibility 0s; }
-  .feat figure .phone { width: 300px; }
-}
-@media (prefers-reduced-motion: reduce) { .feat figure, .feat p, .feat h3 { transition: none !important; } }
-
-/* ---------- goal + closing ---------- */
-.goal { padding-top: 0; }
-.goal .wrap { border-top: 1px solid var(--line); padding-top: 96px; }
-@media (min-width: 960px) { .goal .wrap { padding-top: 136px; } }
-.goal .inner { display: grid; gap: 48px; }
-@media (min-width: 960px) { .goal .inner { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 64px; align-items: end; } }
-.goal h2 { font-size: clamp(28px, 4vw, 42px); line-height: 1.3; }
-.goal .sub { margin-top: 20px; }
-.facts { margin: 0; display: grid; gap: 0; font-size: 15px; }
-.facts div { display: grid; grid-template-columns: 6.5em 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid var(--line); }
-.facts div:last-child { border-bottom: 1px solid var(--line); }
-.facts dt { color: var(--ink-3); }
-.facts dd { margin: 0; font-weight: 500; }
-.goal .soon { margin-top: 32px; }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@600;800;900&family=Gothic+A1:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="images/hero-night.webp">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<header class="site-head">
-  <div class="wrap">
-    <a class="wordmark" href="./"><img src="images/icon.png" alt="" width="28" height="28">iamaforeigner</a>
-    <nav>
-      <a class="opt" href="#features">기능</a>
-      <a href="privacy.html">개인정보 처리방침</a>
-    </nav>
-  </div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-whale" viewBox="0 0 32 32"><path fill="#F4B860" d="M4 17c0-6 5-10 12-10 6 0 11 3.5 11 9 0 5-4.5 9-11 9-3 0-5.5-.8-7.5-2.2L5 25l1-4.5C4.7 19.5 4 18.3 4 17z"/><circle cx="21" cy="14" r="1.6" fill="#0C1633"/><path fill="#F4B860" d="M25 8c1-3 3-4 5-4-1 2-1.5 3.5-3 5z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M4 3.2v17.6c0 .6.7 1 1.2.7L20.5 12.9c.5-.3.5-1.1 0-1.4L5.2 2.5C4.7 2.2 4 2.6 4 3.2z"/></symbol>
+  <symbol id="i-path" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M5 21c0-4 3-5 6-6s5-3 5-6-2-5-5-5"/><circle cx="11" cy="4" r="2.2" fill="currentColor"/><circle cx="5" cy="21" r="2.2" fill="currentColor"/></symbol>
+  <symbol id="i-ask" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M4 5h16v11H10l-5 4v-4H4z"/><path fill="currentColor" d="M11 13.5h2v-2h-2zm1-7.5c-1.7 0-3 1.1-3 2.6h2c0-.4.4-.7 1-.7s1 .3 1 .8c0 .9-2 .9-2 2.3h2c0-.9 2-1.1 2-2.4C15 7.1 13.7 6 12 6z"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3" fill="currentColor"/><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M6 11a6 6 0 0 0 12 0M12 17v4"/></symbol>
+  <symbol id="i-loop" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M20 12a8 8 0 1 1-2.3-5.6M20 4v4h-4"/><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M12 8v4l2.5 2"/></symbol>
+  <symbol id="i-sword" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M14.5 3.5 20 3l-.5 5.5L9 19l-4-4zM5 15l-2 2 4 4 2-2M13 7l4 4"/></symbol>
+  <symbol id="i-gate" viewBox="0 0 24 24"><path fill="currentColor" d="M4 21V9a8 8 0 0 1 16 0v12h-4v-8a4 4 0 0 0-8 0v8H4Z"/></symbol>
+</svg>
+
+<header class="bar">
+  <a class="brand" href="#top"><svg aria-hidden="true"><use href="#i-whale"/></svg>IAMAFOREIGNER</a>
+  <small>by WHALE LAB</small>
 </header>
 
-<main>
-<section class="hero">
+<main id="top">
+
+<!-- 1. 밤: 출발 -->
+<section class="hero" aria-label="소개">
+  <div class="hero__art"><img src="images/hero-night.webp" alt="달밤, 용이 잠든 실력의 산과 불 켜진 관문" width="1536" height="1024"></div>
   <div class="wrap">
-    <div class="copy">
-      <h1><span>한마디씩 말하면</span><span>산을 오릅니다</span></h1>
-      <p class="lede">고래 기사와 함께 영어와 일본어 일상 회화를 익히는 앱. tier 1 산기슭에서 tier 60 정상까지, 하루에 할 만큼만 말하며 올라가요.</p>
-      <div class="actions">
-        <span class="soon" role="img" aria-label="Google Play 출시 예정">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 6 3.5z"/></svg>
-          Google Play <small>출시 예정</small>
-        </span>
-        <a class="textlink" href="#features">기능 둘러보기
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
-        </a>
-      </div>
+    <div class="hero__copy">
+      <h1><span>매일 한 걸음,</span><span>말문이 트이는 산</span></h1>
+      <p class="hero__lede">영어·일본어 일상회화를 배우는 앱. 고래 기사가 되어 tier 1부터 60까지 실력의 산을 올라요. 원어민 흉내가 아니라, 일상에서 막힘없이 말하는 게 목표예요.</p>
+      <p class="soon"><svg aria-hidden="true"><use href="#i-play"/></svg><span>Google Play <em>출시 예정</em></span></p>
     </div>
-    <div class="visual">
-      <div class="art"><img src="images/hero-splash.webp" alt="모자를 쓰고 배낭을 멘 고래가 정상의 빛나는 관문으로 이어진 산길을 걷고 있다" width="820" height="1230" fetchpriority="high"></div>
-      <div class="phone"><img src="images/shot-mountain-1.webp" alt="앱 홈 화면: 실력의 산 지도와 오늘의 음성 일기, 오늘의 미션" width="480" height="937"></div>
+  </div>
+  <figure class="hero__whale">
+    <img src="images/hero-t01.webp" alt="남루한 옷차림으로 출발하는 고래 기사" width="420" height="420">
+    <figcaption>tier 1</figcaption>
+  </figure>
+</section>
+
+<!-- 2. 새벽 전: 옷 계단 + 관문 -->
+<section class="climb" aria-labelledby="climb-h">
+  <div class="wrap climb__head">
+    <h2 id="climb-h">옷이 바뀌면,<br>실력이 오른 거예요</h2>
+    <p>5 tier마다 관문이 있고, 관문마다 보스가 길을 막아요. 보스를 넘으면 다음 구간으로 올라가고, 고래 기사의 장비도 한 벌씩 좋아져요. 누더기에서 황금 갑옷까지, 관문은 모두 열두 개예요.</p>
+  </div>
+  <div class="stairs-box">
+    <div class="stairs" tabindex="0" aria-label="구간별 복장과 관문 보스. 옆으로 넘겨 볼 수 있어요">
+      <ol>
+        <li style="--k:0"><img class="fit" src="images/outfit-01.webp" alt="tier 1~5 복장: 누더기 옷" width="220" height="186"><div class="step"><span class="gate gate--start">출발</span><span class="range">1–5</span></div></li>
+        <li style="--k:1"><img class="fit" src="images/outfit-02.webp" alt="tier 6~10 복장" width="220" height="190"><div class="step"><span class="gate"><img src="images/boss01.webp" alt="" width="240" height="240"><b>tier 5</b></span><span class="range">6–10</span></div></li>
+        <li style="--k:2"><img class="fit" src="images/outfit-03.webp" alt="tier 11~15 복장" width="220" height="184"><div class="step"><span class="gate"><img src="images/boss02.webp" alt="" width="240" height="240"><b>tier 10</b></span><span class="range">11–15</span></div></li>
+        <li style="--k:3"><img class="fit" src="images/outfit-04.webp" alt="tier 16~20 복장" width="220" height="193"><div class="step"><span class="gate"><img src="images/boss03.webp" alt="" width="240" height="240"><b>tier 15</b></span><span class="range">16–20</span></div></li>
+        <li style="--k:4"><img class="fit" src="images/outfit-05.webp" alt="tier 21~25 복장" width="220" height="187"><div class="step"><span class="gate"><img src="images/boss04.webp" alt="" width="240" height="240"><b>tier 20</b></span><span class="range">21–25</span></div></li>
+        <li style="--k:5"><img class="fit" src="images/outfit-06.webp" alt="tier 26~30 복장" width="220" height="176"><div class="step"><span class="gate"><img src="images/boss05.webp" alt="" width="240" height="240"><b>tier 25</b></span><span class="range">26–30</span></div></li>
+        <li style="--k:6"><img class="fit" src="images/outfit-07.webp" alt="tier 31~35 복장" width="220" height="169"><div class="step"><span class="gate"><img src="images/boss06.webp" alt="" width="240" height="240"><b>tier 30</b></span><span class="range">31–35</span></div></li>
+        <li style="--k:7"><img class="fit" src="images/outfit-08.webp" alt="tier 36~40 복장" width="220" height="197"><div class="step"><span class="gate"><img src="images/boss07.webp" alt="" width="240" height="240"><b>tier 35</b></span><span class="range">36–40</span></div></li>
+        <li style="--k:8"><img class="fit" src="images/outfit-09.webp" alt="tier 41~45 복장" width="220" height="220"><div class="step"><span class="gate"><img src="images/boss08.webp" alt="" width="240" height="240"><b>tier 40</b></span><span class="range">41–45</span></div></li>
+        <li style="--k:9"><img class="fit" src="images/outfit-10.webp" alt="tier 46~50 복장" width="220" height="184"><div class="step"><span class="gate"><img src="images/boss09.webp" alt="" width="240" height="240"><b>tier 45</b></span><span class="range">46–50</span></div></li>
+        <li style="--k:10"><img class="fit" src="images/outfit-11.webp" alt="tier 51~55 복장" width="220" height="186"><div class="step"><span class="gate"><img src="images/boss10.webp" alt="" width="240" height="240"><b>tier 50</b></span><span class="range">51–55</span></div></li>
+        <li style="--k:11"><img class="fit" src="images/outfit-12.webp" alt="tier 56~60 복장" width="220" height="189"><div class="step"><span class="gate"><img src="images/boss11.webp" alt="" width="240" height="240"><b>tier 55</b></span><span class="range">56–60</span></div></li>
+        <li style="--k:12" class="top"><img class="fit" src="images/outfit-13.webp" alt="마지막 관문을 넘은 뒤의 황금 갑옷" width="220" height="194"><div class="step"><span class="gate"><img src="images/boss12.webp" alt="" width="240" height="240"><b>tier 60</b></span><span class="range">정상</span></div></li>
+      </ol>
+    </div>
+  </div>
+  <p class="climb__legend wrap"><span class="legend-dot" aria-hidden="true"></span>계단마다 붙은 얼굴이 그 구간 앞을 지키는 관문 보스예요. 첫 관문은 안개 폭포의 주술사, 마지막은 황금 갑옷의 왕.</p>
+</section>
+
+<!-- 3. 낮: 기능 4개 -->
+<div class="day">
+
+<section class="feat feat--dawn" aria-labelledby="f-mission">
+  <div class="wrap feat__grid">
+    <div class="feat__copy">
+      <p class="kicker"><svg aria-hidden="true"><use href="#i-path"/></svg>오늘의 미션</p>
+      <h2 id="f-mission">오늘 갈 길은<br>이미 깔려 있어요</h2>
+      <p class="desc">단어, 숙어, 문법, 말하기가 한 줄 길로 이어져요. 새로 배울 것과 다시 볼 것을 섞어서 매일 새 길을 내줍니다.</p>
+      <ul class="chips"><li>단어</li><li>숙어</li><li>문법</li><li>말하기</li></ul>
+    </div>
+    <div class="stage">
+      <div class="panel" aria-hidden="true"></div>
+      <figure class="phone phone--back"><img src="images/shot-mission-2.webp" alt="오늘의 미션 라운드 2 화면" width="640" height="1250" loading="lazy"></figure>
+      <figure class="phone phone--front"><img src="images/shot-mission-1.webp" alt="오늘의 미션 화면: 캠프를 따라 이어지는 학습 단계" width="640" height="1250" loading="lazy"></figure>
+      <img class="cut cut--mission" src="images/banner-study.webp" alt="" width="520" height="587" loading="lazy">
     </div>
   </div>
 </section>
 
-<section class="climb" aria-labelledby="climb-title">
-  <div class="wrap">
-    <div class="head">
-      <h2 id="climb-title">정상까지 60 tier,<br>관문은 12개</h2>
-      <p class="sub">공부한 만큼 경험치가 쌓이고 한 칸씩 올라갑니다. 5 tier마다 보스가 길을 막고, 이기면 다음 구간이 열려요.</p>
+<section class="feat feat--morning feat--flip" aria-labelledby="f-tutor">
+  <div class="wrap feat__grid">
+    <div class="feat__copy">
+      <p class="kicker"><svg aria-hidden="true"><use href="#i-ask"/></svg>AI 튜터</p>
+      <h2 id="f-tutor">막히면,<br>바로 물어보세요</h2>
+      <p class="desc">단어 뜻부터 뉘앙스, 내 문장 고치기까지. 말투가 다른 선생님 중에 골라서 편하게 물어봐요.</p>
+      <ul class="chips"><li>뜻과 쓰임</li><li>예문</li><li>선생님 고르기</li></ul>
     </div>
-    <div class="scale" aria-hidden="true">
-      <div class="track">
-        <img class="me" src="images/whale-happy.webp" alt="" width="360" height="351" loading="lazy">
-        <i class="gate" style="--t:5"></i><i class="gate" style="--t:10"></i><i class="gate" style="--t:15"></i>
-        <i class="gate" style="--t:20"></i><i class="gate" style="--t:25"></i><i class="gate" style="--t:30"></i>
-        <i class="gate" style="--t:35"></i><i class="gate" style="--t:40"></i><i class="gate" style="--t:45"></i>
-        <i class="gate" style="--t:50"></i><i class="gate" style="--t:55"></i><i class="gate top" style="--t:60"></i>
-      </div>
-      <div class="labels">
-        <span style="--t:1">1</span>
-        <span class="odd" style="--t:5">5</span><span style="--t:10">10</span><span class="odd" style="--t:15">15</span>
-        <span style="--t:20">20</span><span class="odd" style="--t:25">25</span><span style="--t:30">30</span>
-        <span class="odd" style="--t:35">35</span><span style="--t:40">40</span><span class="odd" style="--t:45">45</span>
-        <span style="--t:50">50</span><span class="odd" style="--t:55">55</span><span style="--t:60">60</span>
-      </div>
-    </div>
-    <div class="ends"><p style="margin:0"><b>산기슭</b><span>tier 1</span></p><p style="margin:0"><b>정상</b><span>tier 60</span></p></div>
-  </div>
-</section>
-
-<section class="features" id="features" aria-labelledby="features-title">
-  <div class="wrap">
-    <h2 id="features-title">매일 조금씩, 말로 익혀요</h2>
-    <p class="sub">화면은 모두 실제 기기에서 찍었습니다.</p>
-
-    <div class="show">
-      <div class="feat on">
-        <button type="button" aria-pressed="true"><h3>오늘의 미션</h3><p>단어, 숙어, 문법, 말하기로 이어지는 하루치 길. 새 단어와 복습할 단어를 알맞게 섞어 줍니다.</p></button>
-        <figure><div class="phone"><img src="images/shot-mission-1.webp" alt="오늘의 미션: 숲길 위에 놓인 단계 표시" width="480" height="937" loading="lazy"></div></figure>
-      </div>
-      <div class="feat">
-        <button type="button" aria-pressed="false"><h3>AI 튜터</h3><p>궁금한 단어나 표현을 편하게 물어보세요. 뜻과 쓰임, 예문까지 한 번에 알려 줍니다.</p></button>
-        <figure><div class="phone"><img src="images/shot-tutor-2.webp" alt="AI 튜터 답변: brand new의 의미와 사용 예시" width="480" height="937" loading="lazy"></div></figure>
-      </div>
-      <div class="feat">
-        <button type="button" aria-pressed="false"><h3>프리톡</h3><p>마을 사람에게 목소리로 말을 걸어요. 병원, 식당, 공항처럼 실제로 겪을 상황에서 대화가 이어집니다.</p></button>
-        <figure><div class="phone"><img src="images/shot-freetalk-2.webp" alt="프리톡 대화: 병원 진료받기 상황에서 치유사와 영어로 대화" width="480" height="937" loading="lazy"></div></figure>
-      </div>
-      <div class="feat">
-        <button type="button" aria-pressed="false"><h3>복습과 노트</h3><p>퀴즈, 받아쓰기, 퍼즐로 익히고 잊을 때쯤 다시 풀어요. 배운 단어와 말해 본 문장은 노트에 모입니다.</p></button>
-        <figure><div class="phone"><img src="images/shot-study-1.webp" alt="공부하기: 학습 방법 선택 화면" width="480" height="937" loading="lazy"></div></figure>
-      </div>
-      <div class="feat">
-        <button type="button" aria-pressed="false"><h3>보스전</h3><p>관문을 지키는 보스와 퀴즈로 겨뤄요. 문제는 내가 실제로 공부한 단어에서 나옵니다.</p></button>
-        <figure><div class="phone"><img src="images/shot-boss-1.webp" alt="보스전: feel의 뜻을 네 개의 보기 중에서 고르는 전투" width="480" height="937" loading="lazy"></div></figure>
-      </div>
+    <div class="stage">
+      <div class="panel" aria-hidden="true"></div>
+      <figure class="phone phone--back"><img src="images/shot-tutor-1.webp" alt="AI 튜터 화면: 선생님 고르기와 지난 질문" width="640" height="1250" loading="lazy"></figure>
+      <figure class="phone phone--front"><img src="images/shot-tutor-2.webp" alt="AI 튜터가 brand new의 뜻과 예문을 설명하는 화면" width="640" height="1250" loading="lazy"></figure>
+      <img class="cut cut--tutor" src="images/whale-ask.webp" alt="" width="520" height="679" loading="lazy">
+      <p class="bubble" aria-hidden="true">“brand new”는 언제 써요?</p>
     </div>
   </div>
 </section>
 
-<section class="goal" aria-labelledby="goal-title">
-  <div class="wrap">
-    <div class="inner">
-      <div>
-        <h2 id="goal-title">목표는 원어민이 아니라<br>일상 회화입니다</h2>
-        <p class="sub">여행지에서 길을 묻고, 식당에서 주문하고, 처음 만난 사람과 몇 마디 나누는 정도. 그 지점까지 가장 덜 지루한 길을 만들고 있어요.</p>
-        <span class="soon" role="img" aria-label="Google Play 출시 예정">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 6 3.5z"/></svg>
-          Google Play <small>출시 예정</small>
-        </span>
-      </div>
-      <dl class="facts">
-        <div><dt>배우는 언어</dt><dd>영어, 일본어</dd></div>
-        <div><dt>플랫폼</dt><dd>Android</dd></div>
-        <div><dt>운영</dt><dd>WHALE LAB</dd></div>
-      </dl>
+<section class="feat feat--noon" aria-labelledby="f-talk">
+  <div class="wrap feat__grid">
+    <div class="feat__copy">
+      <p class="kicker"><svg aria-hidden="true"><use href="#i-mic"/></svg>프리톡</p>
+      <h2 id="f-talk">병원에서, 식당에서,<br>공항에서</h2>
+      <p class="desc">마을 사람들을 찾아가 실제 상황으로 대화해요. 목소리로 말하면 알아듣고 대답해 줍니다.</p>
+      <ul class="scenes">
+        <li><img src="images/scene-doctor.webp" alt="" width="300" height="300" loading="lazy">병원</li>
+        <li><img src="images/scene-restaurant.webp" alt="" width="300" height="300" loading="lazy">식당</li>
+        <li><img src="images/scene-airport.webp" alt="" width="300" height="300" loading="lazy">공항</li>
+      </ul>
+    </div>
+    <div class="stage">
+      <div class="panel" aria-hidden="true"></div>
+      <figure class="phone phone--back"><img src="images/shot-freetalk-1.webp" alt="프리톡 마을 지도: 병원, 식당, 입국 심사 등 대화 장소" width="640" height="1250" loading="lazy"></figure>
+      <figure class="phone phone--front"><img src="images/shot-freetalk-2.webp" alt="프리톡 병원 진료받기 대화 화면" width="640" height="1250" loading="lazy"></figure>
+      <img class="cut cut--talk" src="images/whale-go.webp" alt="" width="760" height="918" loading="lazy">
+    </div>
+  </div>
+  <div class="village" aria-hidden="true"></div>
+</section>
+
+<section class="feat feat--afternoon feat--flip" aria-labelledby="f-review">
+  <div class="wrap feat__grid">
+    <div class="feat__copy">
+      <p class="kicker"><svg aria-hidden="true"><use href="#i-loop"/></svg>복습과 노트</p>
+      <h2 id="f-review">잊을 때쯤,<br>다시 나와요</h2>
+      <p class="desc">간격 반복 퀴즈로 잊기 직전에 다시 꺼내 줘요. 배운 단어와 내가 말한 문장은 노트에 차곡차곡 쌓입니다.</p>
+      <ul class="chips"><li>뜻 맞히기</li><li>빈칸 채우기</li><li>받아쓰기</li><li>내가 배운 문장</li></ul>
+    </div>
+    <div class="stage">
+      <div class="panel" aria-hidden="true"></div>
+      <figure class="phone phone--back"><img src="images/shot-study-1.webp" alt="공부하기 화면: 뜻 맞추기, 빈칸 채우기 등 학습 방법" width="640" height="1250" loading="lazy"></figure>
+      <figure class="phone phone--front"><img src="images/shot-study-2.webp" alt="플래시카드 복습 화면" width="640" height="1250" loading="lazy"></figure>
+      <img class="cut cut--review" src="images/whale-curious.webp" alt="" width="225" height="262" loading="lazy">
+      <div class="notecard" aria-hidden="true"><b>I have a bad stomach.</b><span>프리톡 병원에서 말한 문장</span></div>
     </div>
   </div>
 </section>
+
+</div>
+
+<!-- 4. 해질녘 → 밤: 보스전 -->
+<section class="boss" aria-labelledby="f-boss">
+  <div class="boss__bg"><img src="images/boss-bg.webp" alt="" width="1000" height="1500" loading="lazy"></div>
+  <div class="wrap">
+    <div class="boss__head">
+      <p class="kicker"><svg aria-hidden="true"><use href="#i-sword"/></svg>보스전</p>
+      <h2 id="f-boss">관문 앞,<br>배운 단어로 싸운다</h2>
+      <p>5 tier마다 보스가 길을 막아요. 문제는 내가 실제로 공부한 단어에서만 나옵니다. 이기면 관문을 넘어 다음 구간으로.</p>
+    </div>
+    <div class="arena">
+      <img class="fighter fighter--hero" src="images/hero-t01-attack.webp" alt="공격하는 고래 기사" width="420" height="420" loading="lazy">
+      <div class="arena__phones">
+        <figure class="phone"><img src="images/shot-boss-2.webp" alt="보스 안개 폭포의 주술사가 말을 거는 전투 시작 화면" width="640" height="1250" loading="lazy"></figure>
+        <figure class="phone"><img src="images/shot-boss-1.webp" alt="tier 5 보스전: feel의 뜻을 고르는 4지선다" width="640" height="1250" loading="lazy"></figure>
+      </div>
+      <img class="fighter fighter--boss" src="images/boss01-attack.webp" alt="tier 5 보스, 안개 폭포의 주술사" width="420" height="420" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- 5. 정상 -->
+<section class="summit" aria-labelledby="summit-h">
+  <div class="summit__sky" aria-hidden="true"><img src="images/worldmap.webp" alt="" width="900" height="1350" loading="lazy"></div>
+  <div class="wrap">
+    <img class="summit__whale" src="images/hero-t13.webp" alt="황금 갑옷을 입은 고래 기사" width="420" height="420" loading="lazy">
+    <h2 id="summit-h">정상에서 기다릴게요</h2>
+    <p>누더기 옷의 tier 1에서, 황금 갑옷의 정상까지. 하루 한 걸음이면 충분해요.</p>
+    <p class="soon"><svg aria-hidden="true"><use href="#i-play"/></svg><span>Google Play <em>출시 예정</em></span></p>
+  </div>
+</section>
+
 </main>
 
-<footer class="site-foot">
+<footer>
   <div class="wrap">
-    <a class="wordmark" href="./"><img src="images/icon.png" alt="" width="28" height="28">iamaforeigner</a>
-    <div class="links">
+    <a class="brand brand--foot" href="#top"><svg aria-hidden="true"><use href="#i-whale"/></svg>WHALE LAB</a>
+    <nav aria-label="정책">
       <a href="privacy.html">개인정보 처리방침</a>
       <a href="privacy.html#delete-account">계정 삭제 요청</a>
-    </div>
-    <span>&copy; 2026 WHALE LAB</span>
+    </nav>
+    <p>© 2026 WHALE LAB</p>
   </div>
 </footer>
 
-<script>
-(function () {
-  var head = document.querySelector('.site-head');
-  var onScroll = function () { head.classList.toggle('scrolled', window.scrollY > 8); };
-  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+<div class="rail" aria-hidden="true">
+  <span class="rail__lbl">tier</span>
+  <span class="rail__num">1</span>
+  <div class="rail__track"><span class="rail__dot"></span></div>
+</div>
 
-  var feats = document.querySelectorAll('.feat');
-  feats.forEach(function (f) {
-    f.querySelector('button').addEventListener('click', function () {
-      feats.forEach(function (g) {
-        var on = g === f;
-        g.classList.toggle('on', on);
-        g.querySelector('button').setAttribute('aria-pressed', on ? 'true' : 'false');
-      });
-    });
-  });
+<script>
+(function(){
+  var rail=document.querySelector('.rail'), num=rail.querySelector('.rail__num'),
+      dot=rail.querySelector('.rail__dot'), track=rail.querySelector('.rail__track');
+  for(var g=5; g<=60; g+=5){ var t=document.createElement('i'); t.style.bottom=((g-1)/59*100)+'%'; track.appendChild(t); }
+  var ticking=false;
+  function update(){
+    ticking=false;
+    var max=document.documentElement.scrollHeight-innerHeight, p=max>0?Math.min(1,Math.max(0,scrollY/max)):0;
+    num.textContent=Math.round(1+p*59);
+    dot.style.top=((1-p)*100)+'%';
+    rail.classList.toggle('on', scrollY>innerHeight*0.6);
+  }
+  addEventListener('scroll',function(){ if(!ticking){ticking=true;requestAnimationFrame(update);} },{passive:true});
+  update();
 })();
 </script>
 </body>
