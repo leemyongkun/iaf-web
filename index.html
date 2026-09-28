@@ -33,7 +33,7 @@
 
 <!-- 1. 밤: 출발 -->
 <section class="hero" aria-label="소개">
-  <div class="hero__art"><img src="images/hero-night.webp" alt="달밤, 용이 잠든 실력의 산과 불 켜진 관문" width="1536" height="1024"></div>
+  <div class="hero__art"><div class="hero__stage"><img src="images/hero-night.webp" alt="달밤, 용이 잠든 실력의 산과 불 켜진 관문" width="1536" height="1024"></div></div>
   <div class="wrap">
     <div class="hero__copy">
       <h1><span>매일 한 걸음,</span><span>말문이 트이는 산</span></h1>
@@ -41,10 +41,13 @@
       <p class="soon"><svg aria-hidden="true"><use href="#i-play"/></svg><span>Google Play <em>출시 예정</em></span></p>
     </div>
   </div>
-  <figure class="hero__whale">
-    <img src="images/hero-t01.webp" alt="남루한 옷차림으로 출발하는 고래 기사" width="420" height="420">
-    <figcaption>tier 1</figcaption>
-  </figure>
+  <!-- 고래는 배경 그림 좌표에 붙인다(계단 발치). 화면 기준으로 두면 넓은 화면에서 빈 곳에 뜬다. -->
+  <div class="hero__pin"><div class="hero__stage">
+    <figure class="hero__whale">
+      <img src="images/hero-t01.webp" alt="남루한 옷차림으로 출발하는 고래 기사" width="420" height="420">
+      <figcaption>tier 1</figcaption>
+    </figure>
+  </div></div>
 </section>
 
 <!-- 2. 새벽 전: 옷 계단 + 관문 -->
